@@ -1,0 +1,11 @@
+<%= render :partial => 'show', :locals => {:person => @person} %>
+<% user = @person.user
+   if !user.nil? %>
+<%=  render :partial => 'users/show', :locals => {:user => user} %>
+<% end %>
+<p>&nbsp;<br/>
+<% authorized_only hash_for_edit_person_path do %>
+<%=  link_to ts('edit.record', :what => Person.human_name), edit_person_path(@person) %> |
+<% end %>
+<%= render :partial => 'persistent_links' %>
+</p>

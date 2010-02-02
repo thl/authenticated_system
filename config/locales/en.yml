@@ -1,0 +1,32 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+en:
+    activerecord:
+        # Model names will be kept in lower case. Invoke .capitalize or .titleize if you need them in uppercase.
+        models:
+            permission:
+                one: 'permission'
+                other: 'permissions'
+            person:
+                one: 'person'
+                other: 'people'
+            role:
+                one: 'role'
+                other: 'roles'
+            user: 'user'
+        # Attribute names will be titleized.
+        attributes:
+            permission:
+                description: 'Description'
+                title: 'Permission Name'
+            person:
+                fullname: 'Full Name'
+            role:
+                description: 'Description'
+                title: 'Role Name'
+            user:
+                email: 'E-mail'
+                identity_url: 'OpenID URL'
+                login: 'Login'
+                password: 'Password'
+                password_confirmation: 'Confirm Password'

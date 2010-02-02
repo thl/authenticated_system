@@ -1,0 +1,12 @@
+<% form_tag authenticated_system_session_path do -%>
+     <label for="openid_url">OpenID URL</label>
+<%=  text_field_tag 'openid_url' %>
+     <label for="remember_me">Remember me:</label>
+<%=  check_box_tag 'remember_me' %><br/>
+or <label for="login">User</label>
+<%=  text_field_tag 'login', '', :size => 8 %>
+     <label for="password">Password</label>
+<%=  password_field_tag 'password', '', :size => 8 %>
+<%=  globalized_submit_tag 'sign.in' %>
+ (<%= link_to_remote ts('cancel.this'), :url => authenticated_system_show_login_path, :update => 'div_login' %>)
+<% end -%>

@@ -1,0 +1,10 @@
+<h1><%= ts 'new.record', :what => Person.human_name.titleize.s %></h1>
+<%= error_messages_for :person %>
+<%  form_for(:person, :url => people_path) do |f| %>
+<%=   render :partial => 'form', :locals => {:f => f} %>
+      <p><%= globalized_submit_tag 'create.this' %></p>
+<%  end %>
+<p>&nbsp;<br/>
+<%= link_to ts('cancel.record', :what => t('new.this')), people_path %> |
+<%= link_to ts('back.to', :what => t('home.this')), root_path %>
+</p>

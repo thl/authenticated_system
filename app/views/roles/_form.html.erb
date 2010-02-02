@@ -1,0 +1,13 @@
+<p>
+    <b><%= Role.human_attribute_name('title').s %></b><br />
+<%= f.text_field :title %>
+</p>
+<p>
+    <b><%= Role.human_attribute_name('description').s %></b><br />
+<%= f.text_area :description, :rows => 5 %>
+</p>
+  <p><b><%= Permission.human_name(:count => :many).titleize.s %></b></p>
+<%=  render :partial => 'shared/double_select', :locals => { :available_options_title => "#{t(:available, :what => Permission.human_name(:count => :many))}:",
+     :associated_options_title => "#{t('associate.d', :what => Permission.human_name(:count => :many))}:",
+     :associated_options => @role.permissions.collect { |p| [p.title, p.id]},
+     :all_options => @permissions.collect { |p| [p.title, p.id]} }%>

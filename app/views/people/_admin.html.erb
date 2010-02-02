@@ -1,0 +1,5 @@
+<p>
+<%= link_to ts('edit.this'), edit_person_path(@person) %> |
+<%= link_to ts('delete.this'), person_path(@person), :confirm => te('delete.confirmation'), :method => :delete %> |
+<%= link_to ts('back.this'), people_path %>
+</p>

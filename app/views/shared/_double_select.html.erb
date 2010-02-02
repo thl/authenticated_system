@@ -1,0 +1,33 @@
+<%= javascript_include_tag 'select' %>
+<table width="66%">
+  <tr>
+    <td width="40%" rowspan="3" align="left" class="normal">
+      <h3><label for="available_options"><%= available_options_title %></label></h3>
+      <select id="available_options" name="available_options" multiple size="10">
+<%      available_options = all_options - associated_options %>
+<%=     options_for_select(available_options) %>
+      </select><br/>
+      <input name="select_all_available" type="button" onclick="selectAll('available_options')" value="<%= te('select.all') %>"/>
+    </td>
+    <td width="20%" align="center" valign="bottom">
+      <input name="add" type="button" onclick="moveSelected('available_options','associated_options')" value="<%= h('  >  ') %>"/>
+    </td>
+    <td width="40%" rowspan="3" align="right">
+      <h3><label for="associated_options"><%= associated_options_title %></label></h3>
+      <select id="associated_options" name="associated_options[]" multiple = "multiple" size="10">
+        <%= options_for_select(associated_options) %>
+      </select><br/>
+      <input name="select_all_associated" type="button" onclick="selectAll('associated_options')" value="<%= te('select.all') %>"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <input name="remove" type="button" onclick="moveSelected('associated_options','available_options')" value="<%= h('  <  ') %>"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="bottom">
+      <%= submit_tag "#{te :save, :what => t(:changes)}...", language_options(:disabled_with => 'Posting...', :onclick => "selectAll('associated_options');") %>
+    </td>
+  </tr>
+</table>
