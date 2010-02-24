@@ -13,7 +13,7 @@ class Permission < ActiveRecord::Base
   
   # Ensure that the table has one entry for each controller/action pair
   def self.synchronize_with_controllers
-    ActionController::Routing.controller_paths.each { |controller_path| Dir.foreach(controller_path) { |file_name| require_dependency(File.join(controller_path, file_name)) if /_controller.rb$/ =~ file_name } if File.exist?(controller_path) }
+    ActionController::Routing.controller_paths.each { |controller_path| Dir.foreach(controller_path) { |file_name| require(File.join(controller_path, file_name)) if /_controller.rb$/ =~ file_name } if File.exist?(controller_path) }
     all_actions = Array.new
     subclasses_of(AclController).each do |klass|
       controllerName = klass.controller_name
