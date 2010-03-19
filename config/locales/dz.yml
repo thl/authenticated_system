@@ -11,22 +11,22 @@ dz:
             # one
             # other
             role:
-                one: 'role'
-                other: 'roles'
+                one: 'ལས་འགན།'
+                other: 'ལས་འགན་ཚུ།'
             user: 'user'
         # Attribute names will be titleized.
         attributes:
             permission:
                 description: 'འགྲེལ་བཤད།'
-                title: 'Permission Name'
+                title: 'གནང་བའི་མིན།'
             person:
                 fullname: 'མིང་ཆ་ཚང་།'
             role:
                 description: 'འགྲེལ་བཤད།'
                 title: 'ལཱ་འགན་གྱི་མིང་།'
             user:
-                email: 'E-mail'
-                identity_url: 'OpenID URL'
-                login: 'Login'
-                password: 'Password'
-                password_confirmation: 'Confirm Password'
+                email: 'གློག་འཕྲིན།'
+                identity_url: 'OpenID ཡུ་ཨར་ཨེལ།'
+                login: 'ནང་བསྐྱོད།'
+                password: 'ཆོག་ཡིག'
+                password_confirmation: 'ཆོག་ཡིག་ངེས་དཔྱད་འབད།'
