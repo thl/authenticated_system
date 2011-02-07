@@ -1,1 +1,4 @@
-xml << render(:partial => 'index', :locals => {:people => @people})
+xml.instruct!
+xml.people(:type => 'array') do
+  @people.each{ |person| xml << render(:partial => 'show', :locals => {:person => person}) }
+end
