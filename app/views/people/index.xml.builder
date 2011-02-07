@@ -1,0 +1,1 @@
+xml << render(:partial => 'index', :locals => {:people => @people})
