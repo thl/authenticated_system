@@ -1,4 +1,1 @@
-xml.person do
-  xml.id(person.id, :type => 'integer')
-  xml.fullname(person.fullname)
-end
+xml.person(person.fullname, :id => person.id)
