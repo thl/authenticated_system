@@ -14,7 +14,6 @@ class AclController < ApplicationController
   #      end
   #    end
   #
-  include ApplicationHelper
   before_filter :authorize
 
   def initialize
@@ -52,7 +51,11 @@ class AclController < ApplicationController
           render :text => "<p style=\"color: green\">#{message}</p>"
         else
           flash[:notice] = message
-          redirect_to :back
+          begin
+            redirect_to :back
+          rescue ActionController::RedirectBackError
+            redirect_to root_url
+          end
         end
         return false
       end
