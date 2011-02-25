@@ -6,7 +6,7 @@ class PeopleController < AclController
 
     respond_to do |format|
       format.html # index.rhtml
-      format.xml  { render :xml => @people.to_xml }
+      format.xml { render :xml => @people.to_xml }
     end
   end
 
@@ -17,7 +17,7 @@ class PeopleController < AclController
 
     respond_to do |format|
       format.html # show.rhtml
-      format.xml  { render :xml => @person.to_xml }
+      format.xml { render :xml => @person.to_xml }
     end
   end
 

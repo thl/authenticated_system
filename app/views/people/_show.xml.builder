@@ -1,0 +1,1 @@
+xml.person(person.fullname, :id => person.id)
