@@ -1,24 +1,23 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+# Localization file for Dzongkha of authenticated system.
 dz:
     activerecord:
         # Model names will be kept in lower case. Invoke .capitalize or .titleize if you need them in uppercase.
         models:
-            permission: 'གནང་བ།'
-            # one
-            # other
-            person: 'གང་ཟག།'
-            # one
-            # other
+            permission:
+                one: 'གནང་བ།'
+                other: 'གནང་བ་ཚུ།'
+            person:
+                one: 'གང་ཟག།'
+                other: 'གང་ཟག་ཚུ།'
             role:
                 one: 'ལས་འགན།'
                 other: 'ལས་འགན་ཚུ།'
-            user: 'user'
+            user: 'ལག་ལེན་པ།'
         # Attribute names will be titleized.
         attributes:
             permission:
                 description: 'འགྲེལ་བཤད།'
-                title: 'གནང་བའི་མིན།'
+                title: 'གནང་བའི་མིང་།'
             person:
                 fullname: 'མིང་ཆ་ཚང་།'
             role:
@@ -26,7 +25,7 @@ dz:
                 title: 'ལཱ་འགན་གྱི་མིང་།'
             user:
                 email: 'གློག་འཕྲིན།'
-                identity_url: 'OpenID ཡུ་ཨར་ཨེལ།'
+                identity_url: ' ཨོ་པཱན་ཨའི་ཌི་ ཡུ་ཨར་ཨེལ།'
                 login: 'ནང་བསྐྱོད།'
                 password: 'ཆོག་ཡིག'
                 password_confirmation: 'ཆོག་ཡིག་ངེས་དཔྱད་འབད།'

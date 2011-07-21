@@ -1,0 +1,31 @@
+# Localization file for Tibetan of authenticated system.
+bo:
+    activerecord:
+        # Model names will be kept in lower case. Invoke .capitalize or .titleize if you need them in uppercase.
+        models:
+            permission:
+                one: 'དབང་ཚད།'
+                other: 'དབང་ཚད་དག'
+            person:
+                one: 'མི།'
+                other: 'མི་རྣམས།'
+            role:
+                one: 'འོས་འགན'
+                other: 'འོས་འགན་དག'
+            user: 'སྤྱོད་མཁན།'
+        # Attribute names will be titleized.
+        attributes:
+            permission:
+                description: 'ཞིབ་བརྗོད།'
+                title: 'དབང་ཚད་མིང་། '
+            person:
+                fullname: 'མིང་'
+            role:
+                description: 'ཞིབ་བརྗོད།'
+                title: 'འོས་འགན་མིང་།'
+            user:
+                email: 'གློག་རྡུལ་ཡིག་གེ་།'
+                identity_url: 'OpenID URL'
+                login: 'ཐོ་འགོད།'
+                password: 'གསང་ཨང་།'
+                password_confirmation: 'གསང་ཨང་ངོས་འཛིན།'

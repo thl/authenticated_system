@@ -1,0 +1,31 @@
+# Localization file for Chinese of authenticated system.
+zh:
+    activerecord:
+        # Model names will be kept in lower case. Invoke .capitalize or .titleize if you need them in uppercase.
+        models:
+            permission:
+                one: '权限'
+                other: '权限 (复数)'
+            person:
+                one: '人'
+                other: '人们'
+            role:
+                one: '职能'
+                other: '职能 (复数)'
+            user: '用户'
+        # Attribute names will be titleized.
+        attributes:
+            permission:
+                description: '描述'
+                title: '权限名称'
+            person:
+                fullname: '全称'
+            role:
+                description: '描述'
+                title: '职能名称'
+            user:
+                email: '电子邮件'
+                identity_url: 'OpenID URL'
+                login: '登录'
+                password: '密码'
+                password_confirmation: '确认密码'
