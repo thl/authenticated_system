@@ -1,5 +1,5 @@
 <%  authorized_only hash_for_person_user_path(:action => 'destroy') do %>
 <%=   link_to ts('delete.this'), person_user_path(@person), :confirm => te('delete.confirmation'), :method => :delete %> |
 <%  end %>
-<%= link_to ts('back.to', :what => t(:all, :what => Person.human_name(:count => :many))), people_path %> |
+<%= link_to ts('back.to', :what => t('all.these', :what => Person.human_name(:count => :many))), people_path %> |
 <%= link_to ts('back.to', :what => t('home.this')), root_path %>
