@@ -1,4 +1,9 @@
 class PeopleController < AclController
+  def initialize
+    super
+    @guest_perms = []
+  end
+  
   # GET /people
   # GET /people.xml
   def index
