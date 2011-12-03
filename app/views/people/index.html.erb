@@ -10,9 +10,9 @@
   <tr>
     <td>
 <%  if can_edit %>
-<%=   link_to h(person.fullname), edit_person_path(person) %>
+<%=   link_to h(person.fullname).s, edit_person_path(person) %>
 <%  else %>
-<%=   link_to h(person.fullname), person_path(person) %>
+<%=   link_to h(person.fullname).s, person_path(person) %>
 <%  end %>
 	</td>
 <%  user = person.user
