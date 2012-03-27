@@ -2,7 +2,7 @@
 <table border="1" class="normal">
   <tr>
     <th><%= Role.human_name.titleize.s %></th>
-    <th><%= Role.human_attribute_name('description').s %></th>
+    <th><%= Role.human_attribute_name(:description).s %></th>
   </tr>
 <% for role in @roles %>
   <tr>

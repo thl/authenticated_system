@@ -27,7 +27,7 @@
   </tr>
   <tr>
     <td align="center" valign="bottom">
-      <%= submit_tag "#{te :save, :what => t(:changes)}...", language_options(:disabled_with => 'Posting...', :onclick => "selectAll('associated_options');") %>
+      <%= submit_tag "#{te :save, :what => t('change.this', :count => :many)}...", language_options(:disabled_with => 'Posting...', :onclick => "selectAll('associated_options');") %>
     </td>
   </tr>
 </table>

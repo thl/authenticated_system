@@ -1,5 +1,5 @@
-<%= display_if_not_blank Permission.human_attribute_name('title').s, h(@permission.title).s %>
-<%= display_if_not_blank Permission.human_attribute_name('description').s, h(@permission.description) %>
+<%= display_if_not_blank Permission.human_attribute_name(:title).s, h(@permission.title).s %>
+<%= display_if_not_blank Permission.human_attribute_name(:description).s, h(@permission.description) %>
 <p>
 <%= link_to ts('edit.this'), edit_permission_path(@permission) %> |
 <%= link_to ts('delete.this'), permission_path(@permission), :confirm => te('delete.confirmation'), :method => :delete %> |

@@ -4,5 +4,5 @@
 <%=   render :partial => 'form', :locals => {:f => f} %>
       <p><%= globalized_submit_tag 'update.this' %></p>
 <%  end %>
-<p><%= link_to ts(:show), permission_path(@permission) %> |
+<p><%= link_to ts('show.this'), permission_path(@permission) %> |
 <%= link_to ts('back.this'), permissions_path %></p>

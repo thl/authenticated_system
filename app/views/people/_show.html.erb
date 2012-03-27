@@ -1,2 +1,2 @@
 <h2><%= Person.human_name.titleize.s %></h2>
-<%= display_if_not_blank Person.human_attribute_name('fullname').s, h(person.fullname).s %>
+<%= display_if_not_blank Person.human_attribute_name(:fullname).s, h(person.fullname).s %>

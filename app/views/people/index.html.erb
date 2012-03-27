@@ -1,8 +1,8 @@
 <h1><%= ts 'list.ing.records', :what => Person.human_name(:count => :many).titleize %></h1>
 <table border="1" class="normal">
   <tr>
-    <th><%= Person.human_attribute_name('fullname').s %></th>
-    <th><%= User.human_attribute_name('login').s %></th>
+    <th><%= Person.human_attribute_name(:fullname).s %></th>
+    <th><%= User.human_attribute_name(:login).s %></th>
     <th><%= Role.human_name(:count => :many).titleize.s %></th>
   </tr>
 <% can_edit = authorized? hash_for_edit_person_path

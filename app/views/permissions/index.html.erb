@@ -1,8 +1,8 @@
 <h1><%= ts 'list.ing.records', :what => Permission.human_name(:count => :many).titleize %></h1>
 <table border="1" class="normal">
   <tr>
-    <th><%= Permission.human_attribute_name('title').s %></th>
-    <th><%= Permission.human_attribute_name('description').s %></th>
+    <th><%= Permission.human_attribute_name(:title).s %></th>
+    <th><%= Permission.human_attribute_name(:description).s %></th>
   </tr>
 <% for permission in @permissions %>
   <tr>
