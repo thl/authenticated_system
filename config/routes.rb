@@ -1,15 +1,15 @@
-ActionController::Routing::Routes.draw do |map|
-  map.namespace(:authenticated_system) do |authenticated_system|
-    authenticated_system.resource :session
-    authenticated_system.login  'login', :controller => 'sessions', :action => 'new'
-    authenticated_system.logout 'logout', :controller => 'sessions', :action => 'destroy'  
-    authenticated_system.show_login 'show_login', :controller => 'sessions', :action => 'show'
-    authenticated_system.open_id_login 'session', :controller => 'sessions', :action => 'create', :requirements => { :method => :get }
+Rails.application.routes.draw do
+  namespace :authenticated_system do
+      resource :session
+      match 'login' => 'sessions#new', :as => :login
+      match 'logout' => 'sessions#destroy', :as => :logout
+      match 'show_login' => 'sessions#show', :as => :show_login
+      match 'session' => 'sessions#create', :as => :open_id_login, :via => :get
   end
-      
-  map.openid_create 'openid_create', :controller => 'users', :action => 'create', :requirements => { :method => :post }  
-  map.openid_new 'openid_new', :controller => 'users', :action => 'openid_new'
-
-  map.resources :people, :has_one => :user
-  map.resources :permissions, :roles
+  match 'openid_create' => 'users#create', :as => :openid_create, :via => :post
+  match 'openid_new' => 'users#openid_new', :as => :openid_new
+  resources :people do
+    resource :user
+  end
+  resources :permissions, :roles
 end

@@ -1,6 +1,6 @@
 <% if logged_in? %>
 <i><%= current_user.login %></i> (<%= link_to ts('sign.out'), logout_path %>).
 <% else %>
-<%=  ts(:member) %> <%= link_to_remote ts('sign.in'), :update => 'div_login', :url => authenticated_system_login_path, :method => 'get' %>
+<%=  ts(:member) %> <%= link_to ts('sign.in'), authenticated_system_login_path, :remote => true %>
 <% end %>
 <%= render :partial => 'media_searches/simple' %>

@@ -8,5 +8,5 @@ or <label for="login">User</label>
      <label for="password">Password</label>
 <%=  password_field_tag 'password', '', :size => 8 %>
 <%=  globalized_submit_tag 'sign.in' %>
- (<%= link_to_remote ts('cancel.this'), :url => authenticated_system_show_login_path, :update => 'div_login' %>)
+ (<%= link_to ts('cancel.this'), authenticated_system_show_login_path, :remote => true %>)
 <% end -%>
