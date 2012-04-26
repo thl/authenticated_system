@@ -1,16 +1,11 @@
 # This controller handles the login/logout function of the site.  
 class AuthenticatedSystem::SessionsController < ApplicationController
+  # render show.js.erb
   def show
-    render :update do |page|
-      page.call "$('#div_login').html", render(:partial => 'show')
-    end if request.xhr?
   end
 
-  # render new.rhtml
+  # render new.js.erb
   def new
-    render :update do |page|
-      page.call "$('#div_login').html", render(:partial => 'new')
-    end if request.xhr?
   end
 
   def create
