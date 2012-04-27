@@ -1,6 +1,6 @@
 <%= error_messages_for :user %>
 <%= render :partial => 'people/show', :locals => {:person => @person} %>
-<%  form_for [:person, @user], :url => person_user_path(@person) do |f| -%>
+<%= form_for [:person, @user], :url => person_user_path(@person) do |f| -%>
 <%=   render :partial => 'form', :locals => {:f => f} %>
 <%  end -%>
 <p>&nbsp;<br/>

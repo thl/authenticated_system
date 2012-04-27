@@ -7,7 +7,7 @@ class PeopleController < AclController
   # GET /people
   # GET /people.xml
   def index
-    @people = Person.find(:all, :order => 'fullname')
+    @people = Person.order('fullname')
 
     respond_to do |format|
       format.html # index.rhtml

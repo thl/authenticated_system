@@ -24,7 +24,7 @@ class Permission < ActiveRecord::Base
     end
     
     # Find all the 'action_path' columns currently in my table
-    all_records = self.find(:all)
+    all_records = self.all
     known_actions = all_records.collect{ |permission| permission.title }
 
     # If controllers/actions exist that aren't in the db

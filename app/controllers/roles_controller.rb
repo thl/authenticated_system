@@ -7,7 +7,7 @@ class RolesController < AclController
   # GET /roles
   # GET /roles.xml
   def index
-    @roles = Role.find(:all)
+    @roles = Role.all
 
     respond_to do |format|
       format.html # index.rhtml
@@ -32,14 +32,14 @@ class RolesController < AclController
   def new
     @role = Role.new
     Permission.synchronize_with_controllers
-    @permissions = Permission.find(:all, :order => 'title')
+    @permissions = Permission.order('title')
   end
 
   # GET /roles/1;edit
   def edit
     @role = Role.find(params[:id])
     Permission.synchronize_with_controllers
-    @permissions = Permission.find(:all, :order => 'title')
+    @permissions = Permission.order('title')
   end
 
   # POST /roles
@@ -53,6 +53,7 @@ class RolesController < AclController
         format.html { redirect_to role_url(@role) }
         format.xml  { head :created, :location => role_url(@role) }
       else
+        @permissions = Permission.order('title')
         format.html { render :action => "new" }
         format.xml  { render :xml => @role.errors.to_xml }
       end
@@ -70,10 +71,8 @@ class RolesController < AclController
         format.html { redirect_to role_url(@role) }
         format.xml  { head :ok }
       else
-        format.html do
-          @permissions = Permission.find(:all)
-          render :action => "edit"
-        end
+        @permissions = Permission.order('title')
+        format.html { render :action => "edit" }
         format.xml  { render :xml => @role.errors.to_xml }
       end
     end

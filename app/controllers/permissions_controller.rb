@@ -7,7 +7,7 @@ class PermissionsController < AclController
   # GET /permissions
   # GET /permissions.xml
   def index
-    @permissions = Permission.find(:all)
+    @permissions = Permission.all
 
     respond_to do |format|
       format.html # index.rhtml

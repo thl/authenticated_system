@@ -24,14 +24,14 @@ class UsersController < AclController
   # GET /people/1/user/edit
   def edit
     @user = @person.user
-    @roles = Role.find(:all, :order => 'title')
+    @roles = Role.order('title')
   end
     
   # GET /people/1/user/new
   # GET /people/1/user/new.xml
   def new
     @user = @person.build_user
-    @roles = Role.find(:all, :order => 'title')
+    @roles = Role.order('title')
   end
   
   def openid_new
@@ -50,7 +50,7 @@ class UsersController < AclController
               u.login = registration['nickname']
               u.email = registration['email']
             end
-            @roles = Role.find(:all, :order => 'title')
+            @roles = Role..order('title')
             render :action => 'new'
           else
             flash[:notice] = "Identity URL already used by another user!"
@@ -69,7 +69,7 @@ class UsersController < AclController
       redirect_to person_url(@person)
     end
   rescue ActiveRecord::RecordInvalid
-    @roles = Role.find(:all, :order => 'title')
+    @roles = Role.order('title')
     render :action => 'new'
   end
 
@@ -85,7 +85,7 @@ class UsersController < AclController
         format.xml  { head :ok }
       else
         format.html do
-          @roles = Role.find(:all, :order => 'title')
+          @roles = Role.order('title')
           render :action => 'edit' 
         end
         format.xml  { render :xml => @user.errors.to_xml }
