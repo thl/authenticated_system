@@ -17,7 +17,7 @@ class AclController < ApplicationController
   before_filter :authorize
 
   def initialize
-    
+    super
     # @sections    ||= %w/Users Roles Permissions/
     pretty_name = controller_name
     @guest_perms ||= [ "#{pretty_name}/index", "#{pretty_name}/show"]
