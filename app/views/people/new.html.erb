@@ -1,4 +1,4 @@
-<h1><%= ts 'new.record', :what => Person.human_name.titleize.s %></h1>
+<h1><%= ts 'new.record', :what => Person.model_name.human.titleize.s %></h1>
 <%= error_messages_for :person %>
 <%= form_for(:person, :url => people_path) do |f| %>
 <%=   render :partial => 'form', :locals => {:f => f} %>

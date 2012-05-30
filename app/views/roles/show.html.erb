@@ -1,7 +1,7 @@
 <%= display_if_not_blank Role.human_attribute_name(:title).s, h(@role.title).s %>
 <%= display_if_not_blank Role.human_attribute_name ('description').s, h(@role.description) %>
 <% if !@permissions.empty? %>
-     <p><b><%= Permission.human_name(:count => :many).titleize.s %></b></p>
+     <p><b><%= Permission.model_name.human(:count => :many).titleize.s %></b></p>
      <p>
 <%=  @permissions.collect{|p| p.title}.join(', ') %>
      </p>
