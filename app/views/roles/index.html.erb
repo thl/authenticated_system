@@ -12,7 +12,7 @@
 <% end %>
 </table>
 <p>&nbsp;<br/>
-<% authorized_only hash_for_new_role_path do %>
+<% if authorized? hash_for_new_role_path %>
 <%=  link_to ts('new.record', :what => Role.model_name.human), new_role_path %> |
 <% end %>
 <%= link_to ts('back.to', :what => t('home.this')), root_path %>
