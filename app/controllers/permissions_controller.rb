@@ -43,7 +43,7 @@ class PermissionsController < AclController
 
     respond_to do |format|
       if @permission.save
-        flash[:notice] = ts('new.successful', :what => Permission.human_name.capitalize)
+        flash[:notice] = ts('new.successful', :what => Permission.model_name.human.capitalize)
         format.html { redirect_to permission_url(@permission) }
         format.xml  { head :created, :location => permission_url(@permission) }
       else
@@ -60,7 +60,7 @@ class PermissionsController < AclController
 
     respond_to do |format|
       if @permission.update_attributes(params[:permission])
-        flash[:notice] = ts('edit.successful', :what => Permission.human_name.capitalize)
+        flash[:notice] = ts('edit.successful', :what => Permission.model_name.human.capitalize)
         format.html { redirect_to permission_url(@permission) }
         format.xml  { head :ok }
       else

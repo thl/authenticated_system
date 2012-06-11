@@ -6,7 +6,7 @@
 <%= display_if_not_blank User.human_attribute_name(:updated_at).s, user.updated_at %>
 <% roles = user.roles
    if !roles.empty? %>
-     <p><b><%= Role.human_name(:count => :many).titleize.s %>:</b></p>
+     <p><b><%= Role.model_name.human(:count => :many).titleize.s %>:</b></p>
      <ul class="normal">
 <%   for role in roles %>
        <li><%= link_to h(role.title).s, role %></li>

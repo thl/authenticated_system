@@ -1,13 +1,13 @@
 <%= display_if_not_blank Role.human_attribute_name(:title).s, h(@role.title).s %>
 <%= display_if_not_blank Role.human_attribute_name ('description').s, h(@role.description) %>
 <% if !@permissions.empty? %>
-     <p><b><%= Permission.human_name(:count => :many).titleize.s %></b></p>
+     <p><b><%= Permission.model_name.human(:count => :many).titleize.s %></b></p>
      <p>
 <%=  @permissions.collect{|p| p.title}.join(', ') %>
      </p>
 <% end %>
 <p>&nbsp;<br/>
-<% authorized_only hash_for_edit_role_path do %>
+<% if authorized? hash_for_edit_role_path %>
 <%=  link_to ts('edit.this'), edit_role_path(@role) %> |
 <% end %>
 <%= render :partial => 'persistent_links' %>

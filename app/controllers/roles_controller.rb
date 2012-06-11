@@ -49,7 +49,7 @@ class RolesController < AclController
     respond_to do |format|
       if @role.save
         update_permissions
-        flash[:notice] = ts('new.successful', :what => Role.human_name.capitalize)
+        flash[:notice] = ts('new.successful', :what => Role.model_name.human.capitalize)
         format.html { redirect_to role_url(@role) }
         format.xml  { head :created, :location => role_url(@role) }
       else
@@ -67,7 +67,7 @@ class RolesController < AclController
     respond_to do |format|
       if @role.update_attributes(params[:role])
         update_permissions
-        flash[:notice] = ts('edit.successful', :what => Role.human_name.capitalize)
+        flash[:notice] = ts('edit.successful', :what => Role.model_name.human.capitalize)
         format.html { redirect_to role_url(@role) }
         format.xml  { head :ok }
       else

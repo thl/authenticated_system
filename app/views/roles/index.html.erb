@@ -1,7 +1,7 @@
-<h1><%= ts 'list.ing.records', :what => Role.human_name.titleize %></h1>
+<h1><%= ts 'list.ing.records', :what => Role.model_name.human.titleize %></h1>
 <table border="1" class="normal">
   <tr>
-    <th><%= Role.human_name.titleize.s %></th>
+    <th><%= Role.model_name.human.titleize.s %></th>
     <th><%= Role.human_attribute_name(:description).s %></th>
   </tr>
 <% for role in @roles %>
@@ -12,8 +12,8 @@
 <% end %>
 </table>
 <p>&nbsp;<br/>
-<% authorized_only hash_for_new_role_path do %>
-<%=  link_to ts('new.record', :what => Role.human_name), new_role_path %> |
+<% if authorized? hash_for_new_role_path %>
+<%=  link_to ts('new.record', :what => Role.model_name.human), new_role_path %> |
 <% end %>
 <%= link_to ts('back.to', :what => t('home.this')), root_path %>
 </p>

@@ -43,7 +43,7 @@ class PeopleController < AclController
 
     respond_to do |format|
       if @person.save
-        flash[:notice] = ts('new.successful', :what => Person.human_name.capitalize)
+        flash[:notice] = ts('new.successful', :what => Person.model_name.human.capitalize)
         format.html { redirect_to person_url(@person) }
         format.xml  { head :created, :location => person_url(@person) }
       else
@@ -60,7 +60,7 @@ class PeopleController < AclController
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
-        flash[:notice] = ts('edit.successful', :what => Person.human_name.capitalize)
+        flash[:notice] = ts('edit.successful', :what => Person.model_name.human.capitalize)
         format.html { redirect_to person_url(@person) }
         format.xml  { head :ok }
       else
