@@ -1,6 +1,6 @@
 <h1><%= ts 'edit.ing.record', :what => Role.model_name.human.titleize %></h1>
 <%= error_messages_for :role %>
-<%= form_for(:role, :url => role_path(@role), :method => :put) do |f| %>
+<%= form_for(:role, :url => role_path(@role), :html => {:method => :put}) do |f| %>
 <%=   render :partial => 'form', :locals => {:f => f} %>
 <%  end %>
 <p>&nbsp;<br/>
