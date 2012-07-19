@@ -1,9 +1,0 @@
-<%= error_messages_for :user %>
-<%= render :partial => 'people/show', :locals => {:person => @person} %>
-<%= form_for [:person, @user], :url => person_user_path(@person) do |f| -%>
-<%=   render :partial => 'form', :locals => {:f => f} %>
-<%  end -%>
-<p>&nbsp;<br/>
-<%= link_to ts('cancel.record', :what => t('new.this')), people_path %> |
-<%= link_to ts('back.to', :what => t('home.this')), root_path %>
-</p>

@@ -1,6 +1,6 @@
-require 'action_controller'
-require 'application_helper'
-require 'user'
+#require 'action_controller'
+#require 'application_helper'
+#require 'authenticated_system/user'
 
 class AclController < ApplicationController
   # This is a secured controller from which others should derive. They are a limited set

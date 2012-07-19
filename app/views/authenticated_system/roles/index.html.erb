@@ -1,0 +1,19 @@
+<h1><%= ts 'list.ing.records', :what => AuthenticatedSystem::Role.model_name.human.titleize %></h1>
+<table border="1" class="normal">
+  <tr>
+    <th><%= AuthenticatedSystem::Role.model_name.human.titleize.s %></th>
+    <th><%= AuthenticatedSystem::Role.human_attribute_name(:description).s %></th>
+  </tr>
+<% for role in @roles %>
+  <tr>
+    <td><%=link_to h(role.title).s, authenticated_system_role_path(role) %></td>
+    <td><%=h role.description %></td>
+  </tr>
+<% end %>
+</table>
+<p>&nbsp;<br/>
+<% if authorized? hash_for_new_authenticated_system_role_path %>
+<%=  link_to ts('new.record', :what => AuthenticatedSystem::Role.model_name.human), new_authenticated_system_role_path %> |
+<% end %>
+<%= link_to ts('back.to', :what => t('home.this')), root_path %>
+</p>

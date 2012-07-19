@@ -3,27 +3,27 @@ zh:
     activerecord:
         # Model names will be kept in lower case. Invoke .capitalize or .titleize if you need them in uppercase.
         models:
-            permission:
+            authenticated_system/permission:
                 one: '权限'
                 other: '权限 (复数)'
-            person:
+            authenticated_system/person:
                 one: '人'
                 other: '人们'
-            role:
+            authenticated_system/role:
                 one: '职能'
                 other: '职能 (复数)'
             user: '用户'
         # Attribute names will be titleized.
         attributes:
-            permission:
+            authenticated_system/permission:
                 description: '描述'
                 title: '权限名称'
-            person:
+            authenticated_system/person:
                 fullname: '全称'
-            role:
+            authenticated_system/role:
                 description: '描述'
                 title: '职能名称'
-            user:
+            authenticated_system/user:
                 email: '电子邮件'
                 identity_url: 'OpenID URL'
                 login: '登录'

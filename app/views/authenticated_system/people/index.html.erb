@@ -1,0 +1,38 @@
+<h1><%= ts 'list.ing.records', :what => AuthenticatedSystem::Person.model_name.human(:count => :many).titleize %></h1>
+<table border="1" class="normal">
+  <tr>
+    <th><%= AuthenticatedSystem::Person.human_attribute_name(:fullname).s %></th>
+    <th><%= AuthenticatedSystem::User.human_attribute_name(:login).s %></th>
+    <th><%= AuthenticatedSystem::User.model_name.human(:count => :many).titleize.s %></th>
+  </tr>
+<% can_edit = authorized? hash_for_edit_authenticated_system_person_path
+   for person in @people %>
+  <tr>
+    <td>
+<%  if can_edit %>
+<%=   link_to h(person.fullname).s, edit_authenticated_system_person_path(person) %>
+<%  else %>
+<%=   link_to h(person.fullname).s, authenticated_system_person_path(person) %>
+<%  end %>
+	</td>
+<%  user = person.user
+    if !user.nil? %>
+      <td>
+<%	  if authorized? hash_for_edit_authenticated_system_person_user_path %>
+<%=     link_to(h(user.login), edit_authenticated_system_person_user_path(person)) %>
+<%    else %>
+<%=     link_to(h(user.login), authenticated_system_person_user_path(person)) %>
+<%    end %></td>
+      <td><%= user.roles.collect{|r| authorized?(hash_for_authenticated_system_role_path) ? link_to(h(r.title), authenticated_system_role_path(r)) : r.title }.join(', ') %></td>
+<%  else %>
+      <td colspan="2"><%= link_to ts('new.record', :what => AuthenticatedSystem::User.model_name.human), new_authenticated_system_person_user_path(person) %></td>
+<%  end %>
+  </tr>
+<% end %>
+</table>
+<p>&nbsp;<br/>
+<% if authorized? hash_for_new_authenticated_system_person_path %>
+<%=  link_to ts('new.record', :what => AuthenticatedSystem::Person.model_name.human), new_authenticated_system_person_path %> |
+<% end %>
+<%= link_to ts('back.to', :what => t('home.this')), root_path %>
+</p>

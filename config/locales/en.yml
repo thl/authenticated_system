@@ -3,27 +3,27 @@ en:
     activerecord:
         # Model names will be kept in lower case. Invoke .capitalize or .titleize if you need them in uppercase.
         models:
-            permission:
+            authenticated_system/permission:
                 one: 'permission'
                 other: 'permissions'
-            person:
+            authenticated_system/person:
                 one: 'person'
                 other: 'people'
-            role:
+            authenticated_system/role:
                 one: 'role'
                 other: 'roles'
-            user: 'user'
+            authenticated_system/user: 'user'
         # Attribute names will be titleized.
         attributes:
-            permission:
+            authenticated_system/permission:
                 description: 'Description'
                 title: 'Permission Name'
-            person:
+            authenticated_system/person:
                 fullname: 'Full Name'
-            role:
+            authenticated_system/role:
                 description: 'Description'
                 title: 'Role Name'
-            user:
+            authenticated_system/user:
                 email: 'E-mail'
                 identity_url: 'OpenID URL'
                 login: 'Login'

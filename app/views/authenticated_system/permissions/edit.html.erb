@@ -1,0 +1,8 @@
+<h1><%= ts 'edit.ing.record', :what => AuthenticatedSystem::Permission.titleize %></h1>
+<%= error_messages_for :permission %>
+<%= form_for(:permission, :url => authenticated_system_permission_path(@permission), :html => {:method => :put}) do |f| %>
+<%=   render :partial => 'form', :locals => {:f => f} %>
+      <p><%= globalized_submit_tag 'update.this' %></p>
+<%  end %>
+<p><%= link_to ts('show.this'), authenticated_system_permission_path(@permission) %> |
+<%= link_to ts('back.this'), authenticated_system_permissions_path %></p>

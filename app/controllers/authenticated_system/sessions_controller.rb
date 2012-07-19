@@ -29,7 +29,7 @@ class AuthenticatedSystem::SessionsController < ApplicationController
   def open_id_authentication(openid_url)
     authenticate_with_open_id(openid_url, :required => [:nickname, :email]) do |result, identity_url, registration|
       if result.successful?
-        @user = User.find_by_identity_url(identity_url)
+        @user = AuthenticatedSystem::User.find_by_identity_url(identity_url)
         if @user.nil?
           failed_login result.message
         else
@@ -43,7 +43,7 @@ class AuthenticatedSystem::SessionsController < ApplicationController
   end
   
   def password_authentication(login, password)
-    self.current_user = User.authenticate(login, password)
+    self.current_user = AuthenticatedSystem::User.authenticate(login, password)
     if logged_in?
       successful_login
     else

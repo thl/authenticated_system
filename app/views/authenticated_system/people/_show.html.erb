@@ -1,0 +1,2 @@
+<h2><%= AuthenticatedSystem::Person.model_name.human.titleize.s %></h2>
+<%= display_if_not_blank AuthenticatedSystem::Person.human_attribute_name(:fullname).s, h(person.fullname).s %>
