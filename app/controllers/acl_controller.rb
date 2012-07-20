@@ -19,7 +19,7 @@ class AclController < ApplicationController
   def initialize
     super
     # @sections    ||= %w/Users Roles Permissions/
-    pretty_name = controller_name
+    pretty_name = controller_path
     @guest_perms ||= [ "#{pretty_name}/index", "#{pretty_name}/show"]
     # @guest_perms = []
     # @uri_name = @pretty_name.downcase
@@ -30,7 +30,7 @@ class AclController < ApplicationController
 
   # Authorizes the user for an action.
   def authorize
-    required_perm = "#{controller_name}/#{action_name}"
+    required_perm = "#{controller_path}/#{action_name}"
     unless @guest_perms.include? required_perm
       message = String.new
       unless logged_in?
