@@ -1,8 +1,13 @@
 AuthenticatedSystem
 ===================
 
-Introduction goes here.
+Provides login support, roles and permissions at a controller / action level.
 
+Installation
+============
+
+Please include the following lines in your application.css file:
+*= require authenticated_system
 
 Example
 =======
