@@ -1,7 +1,7 @@
 <%= render :partial => 'show', :locals => {:person => @person} %>
 <% user = @person.user
    if !user.nil? %>
-<%=  render :partial => 'users/show', :locals => {:user => user} %>
+<%=  render :partial => 'authenticated_system/users/show', :locals => {:user => user} %>
 <% end %>
 <p>&nbsp;<br/>
 <% if authorized? hash_for_edit_authenticated_system_person_path %>

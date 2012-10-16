@@ -23,7 +23,7 @@
 <%    else %>
 <%=     link_to(h(user.login), authenticated_system_person_user_path(person)) %>
 <%    end %></td>
-      <td><%= user.roles.collect{|r| authorized?(hash_for_authenticated_system_role_path) ? link_to(h(r.title), authenticated_system_role_path(r)) : r.title }.join(', ') %></td>
+      <td><%= user.roles.collect{|r| authorized?(hash_for_authenticated_system_role_path) ? link_to(h(r.title), authenticated_system_role_path(r)) : r.title }.join(', ').html_safe %></td>
 <%  else %>
       <td colspan="2"><%= link_to ts('new.record', :what => AuthenticatedSystem::User.model_name.human), new_authenticated_system_person_user_path(person) %></td>
 <%  end %>

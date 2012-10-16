@@ -7,7 +7,9 @@
 #  user_id :integer(4)      not null
 #
 
-class AuthenticatedSystem::RolesUser < ActiveRecord::Base
-  belongs_to :role
-  belongs_to :user
+module AuthenticatedSystem
+  class RolesUser < ActiveRecord::Base
+    belongs_to :role
+    belongs_to :user
+  end
 end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resource :user
     end
     resources :permissions, :roles
+    match 'openid_create' => 'users#create', :as => :openid_create, :via => :post
+    match 'openid_new' => 'users#openid_new', :as => :openid_new
   end
-  match 'openid_create' => 'users#create', :as => :openid_create, :via => :post
-  match 'openid_new' => 'users#openid_new', :as => :openid_new
 end

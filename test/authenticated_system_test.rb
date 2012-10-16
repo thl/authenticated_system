@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class AuthenticatedSystemTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "truth" do
+    assert_kind_of Module, AuthenticatedSystem
   end
 end

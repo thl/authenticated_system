@@ -7,7 +7,9 @@
 #  role_id       :integer(4)      not null
 #
 
-class AuthenticatedSystem::PermissionsRole < ActiveRecord::Base
-  belongs_to :permission
-  belongs_to :role
+module AuthenticatedSystem
+  class PermissionsRole < ActiveRecord::Base
+    belongs_to :permission
+    belongs_to :role
+  end
 end

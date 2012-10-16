@@ -1,4 +1,4 @@
-<%= render :partial => 'people/show', :locals => {:person => @person} %>
+<%= render :partial => 'authenticated_system/people/show', :locals => {:person => @person} %>
 <%= render :partial => 'show', :locals => {:user => @user} %>
 <p>&nbsp;<br/>
 <% if authorized? hash_for_authenticated_system_person_user_path %>
