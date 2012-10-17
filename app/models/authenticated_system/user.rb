@@ -1,19 +1,19 @@
 # == Schema Information
-# Schema version: 20090626173648
 #
 # Table name: users
 #
-#  id                        :integer(4)      not null, primary key
-#  person_id                 :integer(4)
-#  login                     :string(80)      not null
-#  crypted_password          :string(40)
-#  identity_url              :string(255)
-#  email                     :string(255)
+#  id                        :integer          not null, primary key
+#  login                     :string(255)      not null
+#  email                     :string(255)      not null
+#  person_id                 :integer
+#  crypted_password          :string(40)       not null
 #  salt                      :string(40)
-#  created_at                :datetime
-#  updated_at                :datetime
 #  remember_token            :string(255)
 #  remember_token_expires_at :datetime
+#  created_at                :datetime
+#  updated_at                :datetime
+#  identity_url              :string(255)
+#  shibboleth_id             :string(255)
 #
 
 require 'digest/sha1'

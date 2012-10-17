@@ -1,4 +1,14 @@
 # == Schema Information
+#
+# Table name: people
+#
+#  id         :integer          not null, primary key
+#  fullname   :string(255)      not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# == Schema Information
 # Schema version: 20090626173648
 #
 # Table name: people

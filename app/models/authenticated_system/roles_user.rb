@@ -1,10 +1,9 @@
 # == Schema Information
-# Schema version: 20090626173648
 #
 # Table name: roles_users
 #
-#  role_id :integer(4)      not null
-#  user_id :integer(4)      not null
+#  role_id :integer          not null
+#  user_id :integer          not null
 #
 
 module AuthenticatedSystem

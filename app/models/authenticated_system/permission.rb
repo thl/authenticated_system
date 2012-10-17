@@ -1,4 +1,15 @@
 # == Schema Information
+#
+# Table name: permissions
+#
+#  id          :integer          not null, primary key
+#  title       :string(60)       not null
+#  description :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# == Schema Information
 # Schema version: 20090626173648
 #
 # Table name: permissions

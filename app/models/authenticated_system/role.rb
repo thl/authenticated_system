@@ -1,11 +1,12 @@
 # == Schema Information
-# Schema version: 20090626173648
 #
 # Table name: roles
 #
-#  id          :integer(4)      not null, primary key
-#  title       :string(20)      not null
+#  id          :integer          not null, primary key
+#  title       :string(20)       not null
 #  description :text
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 module AuthenticatedSystem
