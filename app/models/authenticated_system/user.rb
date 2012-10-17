@@ -6,7 +6,7 @@
 #  login                     :string(255)      not null
 #  email                     :string(255)      not null
 #  person_id                 :integer
-#  crypted_password          :string(40)       not null
+#  crypted_password          :string(40)
 #  salt                      :string(40)
 #  remember_token            :string(255)
 #  remember_token_expires_at :datetime
