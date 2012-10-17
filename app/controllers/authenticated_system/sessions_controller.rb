@@ -32,16 +32,22 @@ module AuthenticatedSystem
 
       if logged_in?
         self.current_user.update_attribute(:shibboleth_id, self.shibboleth_id) if self.current_user.shibboleth_id.blank? && User.find_by_shibboleth_id(self.shibboleth_id).nil?
-        redirect_back_or_default(root_url)
         flash[:notice] = "UVa credentials associated successfully."
+        redirect_back_or_default(root_url)
       elsif self.shibboleth_id.blank?
         failed_login
       else
-        user = User.find_by_shibboleth_id(self.shibboleth_id) || User.find_by_email("#{self.shibboleth_id}@virginia.edu") || User.find_by_login(self.shibboleth_id)
+        user = User.find_by_shibboleth_id(self.shibboleth_id) || User.find_by_email("#{self.shibboleth_id}@virginia.edu")
         if user.nil?
           # go back to regular http
           #redirect_to signup_netbadge_url
-          failed_login
+          # failed_login
+          p = Person.create :fullname => self.shibboleth_fullname
+          u = p.build_user :login => self.shibboleth_id, :email => self.shibboleth_email
+          u.shibboleth_id = self.shibboleth_id
+          u.save
+          flash[:notice] = "UVa user created and logged in successfully."
+          redirect_back_or_default(root_url)
         else
           user.update_attribute(:shibboleth_id, self.shibboleth_id) if user.shibboleth_id.blank? && User.find_by_shibboleth_id(self.shibboleth_id).nil?
           self.current_user = user

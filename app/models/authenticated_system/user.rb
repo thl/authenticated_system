@@ -125,7 +125,8 @@ module AuthenticatedSystem
       end
 
       def password_required?
+        return false unless self.shibboleth_id.blank? && self.identity_url.blank?
         crypted_password.blank? || !password.blank?
-      end 
+      end
   end
 end

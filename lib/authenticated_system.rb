@@ -120,6 +120,13 @@ module AuthenticatedSystem
       request.env['REMOTE_USER']#.blank? ? session[:netbadgeid] : request.env['REMOTE_USER']
     end
     
+    def shibboleth_fullname
+      "#{request.env['givenName']} #{request.env['sn']}"
+    end
+
+    def shibboleth_email
+      request.env['eppn']
+    end
 end
 
 ActionController::Base.send :include, AuthenticatedSystem
