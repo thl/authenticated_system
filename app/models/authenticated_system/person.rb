@@ -21,10 +21,10 @@ module AuthenticatedSystem
   class Person < ActiveRecord::Base
     attr_accessible :fullname
     
-    has_many :media, :foreign_key => 'photographer_id', :dependent => :nullify
-    has_many :descriptions, :foreign_key => 'creator_id', :dependent => :nullify
-    has_many :administrative_units, :foreign_key => 'creator_id', :dependent => :nullify
-    has_many :captions, :foreign_key => 'creator_id', :dependent => :nullify
+    #has_many :media, :foreign_key => 'photographer_id', :dependent => :nullify
+    #has_many :descriptions, :foreign_key => 'creator_id', :dependent => :nullify
+    #has_many :administrative_units, :foreign_key => 'creator_id', :dependent => :nullify
+    #has_many :captions, :foreign_key => 'creator_id', :dependent => :nullify
     has_one :user, :dependent => :destroy
   end
 end
