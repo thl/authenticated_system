@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     match 'openid_create' => 'users#create', :as => :openid_create, :via => :post
     match 'openid_new' => 'users#openid_new', :as => :openid_new
   end
-  match '/shibboleth' => 'authenticated_system/sessions#shibboleth', :constraints => { :protocol=> 'https' }, :as => :shibboleth
+  match 'shibboleth' => 'authenticated_system/sessions#shibboleth', :constraints => { :protocol=> 'https' }, :as => :shibboleth
 end
