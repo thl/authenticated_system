@@ -115,6 +115,11 @@ module AuthenticatedSystem
         self.current_user = user
       end
     end
+    
+    def shibboleth_id
+      request.env['REMOTE_USER']#.blank? ? session[:netbadgeid] : request.env['REMOTE_USER']
+    end
+    
 end
 
 ActionController::Base.send :include, AuthenticatedSystem
