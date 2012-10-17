@@ -43,9 +43,10 @@ module AuthenticatedSystem
           #redirect_to signup_netbadge_url
           # failed_login
           p = Person.create :fullname => self.shibboleth_fullname
-          u = p.build_user :login => self.shibboleth_id, :email => self.shibboleth_email
-          u.shibboleth_id = self.shibboleth_id
-          u.save
+          user = p.build_user :login => self.shibboleth_id, :email => self.shibboleth_email
+          user.shibboleth_id = self.shibboleth_id
+          user.save
+          self.current_user = user
           flash[:notice] = "UVa user created and logged in successfully."
           redirect_back_or_default(root_url)
         else
