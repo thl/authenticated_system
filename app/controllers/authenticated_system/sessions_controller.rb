@@ -75,7 +75,7 @@ module AuthenticatedSystem
 
     def failed_login(message = "Authentication failed.")
       flash[:notice] = message
-      redirect_to new_session_url
+      redirect_to new_authenticated_system_session_url
     end
 
     def successful_login
