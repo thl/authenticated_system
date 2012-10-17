@@ -63,7 +63,7 @@ module AuthenticatedSystem
           end        
         end
       else
-        @user = @person.build_user(params[:user])
+        @user = @person.build_user(params[:authenticated_system_user])
         @user.save!
         update_roles(params[:associated_options])
         flash[:notice] = "User succesfully created!"
@@ -80,7 +80,7 @@ module AuthenticatedSystem
       @user = @person.user
       update_roles(params[:associated_options])
       respond_to do |format|
-        if @user.update_attributes(params[:user])
+        if @user.update_attributes(params[:authenticated_system_user])
           flash[:notice] = 'User was successfully updated.'
           format.html { redirect_to authenticated_system_people_url }
           format.xml  { head :ok }
