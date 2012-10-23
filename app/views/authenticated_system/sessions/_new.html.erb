@@ -1,12 +1,34 @@
-<%= form_tag authenticated_system_session_path do -%>
-     <label for="openid_url">OpenID URL</label>
-<%=  text_field_tag 'openid_url' %>
-     <label for="remember_me">Remember me:</label>
-<%=  check_box_tag 'remember_me' %><br/>
-or <label for="login">User</label>
-<%=  text_field_tag 'login', '', :size => 8 %>
-     <label for="password">Password</label>
-<%=  password_field_tag 'password', '', :size => 8 %>
-<%=  globalized_submit_tag 'sign.in' %>
- (<%= link_to ts('cancel.this'), authenticated_system_show_login_path, :remote => true %>)
-<% end -%>
+<div class='login-box'>
+<fieldset>
+	<div class='left-column'>
+		<p>Log in with your <b>UVa account</b></p>
+	</div>
+	<div class='right-column'>
+		<p><%= link_to 'Log in', shibboleth_url(:protocol => 'https'), :class => 'emphasize' %></p>
+		<p class='red-caption'>Recommended. More secure!</p>
+	</div>
+</fieldset>
+</div>
+<p>&nbsp;</p>
+<div class='login-box'>
+<fieldset>
+	<%= form_tag authenticated_system_session_path do -%>
+	<div class='left-column'>
+		<p><b>Non-UVa</b> user? Use this option.</p>
+        <p><label for="openid_url">Log in to your kmaps account using <%= AuthenticatedSystem::User.human_attribute_name(:identity_url).s %></label><br/>
+		<%=  text_field_tag 'openid_url' %></p>
+        <p>or use...</p>
+	</div>
+	<div class='right-column'>	
+     <p><label for="login"><%= AuthenticatedSystem::User.human_attribute_name(:login).s %></label><br/>
+<%=  text_field_tag 'login' %></p>
+     <p><label for="password"><%= AuthenticatedSystem::User.human_attribute_name(:password).s %></label><br/>
+<%=  password_field_tag 'password' %></p>
+<!-- Uncomment this if you want this functionality -->
+     <p><label for="remember_me">Remember me:</label>
+<%=  check_box_tag 'remember_me' %></p>
+     <p><%= globalized_submit_tag 'sign.in' %></p>
+    </div>
+	<% end -%>
+</fieldset>
+</div>

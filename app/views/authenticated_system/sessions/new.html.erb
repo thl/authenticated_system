@@ -1,14 +1,1 @@
-<h1><%= AuthenticatedSystem::User.human_attribute_name(:login).titleize.s %></h1>
-<%= form_tag authenticated_system_session_path do -%>
-     <p><label for="openid_url"><%= AuthenticatedSystem::User.human_attribute_name(:identity_url).s %></label><br/>
-<%=  text_field_tag 'openid_url' %></p>
-     <p>or use...</p>
-     <p><label for="login"><%= AuthenticatedSystem::User.human_attribute_name(:login).s %></label><br/>
-<%=  text_field_tag 'login' %></p>
-     <p><label for="password"><%= AuthenticatedSystem::User.human_attribute_name(:password).s %></label><br/>
-<%=  password_field_tag 'password' %></p>
-<!-- Uncomment this if you want this functionality -->
-     <p><label for="remember_me">Remember me:</label>
-<%=  check_box_tag 'remember_me' %></p>
-     <p><%= globalized_submit_tag 'sign.in' %></p>
-<% end -%>
+<%= render 'new' %>
