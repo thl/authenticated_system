@@ -37,20 +37,25 @@ z-index:0;
 	    box-shadow: 0 1px 8px #CCCCCC;
 	    margin: 0 0 10px;
 	    padding: 10px !important;
-	    width: 500px;
+	    width: 600px;
 	}
 	
 .left-column {
 	    float: left;
-	    width: 48%;
+	    width: 39%;
+}
+
+.center-column {
+	    float: left;
+	    width: 20%;
 }
 
 .right-column {
     float: right;
-    width: 48%;
+    width: 39%;
 }
 
-.emphasize {
+a.emphasize:link, a.emphasize:visited {
     background: none repeat scroll 0 0 #990000;
     color: #FFFFFF;
     padding: 5px !important;
