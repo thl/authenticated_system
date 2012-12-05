@@ -5,13 +5,13 @@ bo:
         models:
             authenticated_system/permission:
                 one: 'དབང་ཚད།'
-                other: 'དབང་ཚད་དག'
+                other: 'དབང་ཚད་དག་'
             authenticated_system/person:
                 one: 'མི།'
                 other: 'མི་རྣམས།'
             authenticated_system/role:
                 one: 'འོས་འགན'
-                other: 'འོས་འགན་དག'
+                other: 'འོས་འགན་དག་'
             authenticated_system/user: 'སྤྱོད་མཁན།'
         # Attribute names will be titleized.
         attributes:
