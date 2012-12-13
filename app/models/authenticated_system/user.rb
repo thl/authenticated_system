@@ -21,6 +21,8 @@ require 'digest/sha1'
 
 module AuthenticatedSystem
   class User < ActiveRecord::Base
+    before_save { |record| record.encrypt_password }
+    
     belongs_to :person
     has_and_belongs_to_many :roles, :order => 'title'
 
@@ -37,7 +39,6 @@ module AuthenticatedSystem
     validates_length_of       :login,    :within => 3..40
     validates_length_of       :email,    :within => 3..100
     validates_uniqueness_of   :login, :email, :case_sensitive => false
-    before_save :encrypt_password
 
     # prevents a user from submitting a crafted form that bypasses activation
     # anything else you want your user to change should be added here.
