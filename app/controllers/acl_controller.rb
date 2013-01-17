@@ -38,12 +38,12 @@ class AclController < ApplicationController
         #session[:return_to] = session[:prev_uri]
         #ensure you change "user" to your login controller name
         #redirect_to root_url
-        #redirect_back_or_default root_url
+        #redirect_back_or_root
       else
         unless current_user.authorized? required_perm
           message = "Your user is not authorized to access #{required_perm}."
           #redirect_to root_url
-          #redirect_back_or_default root_url
+          #redirect_back_or_root
         end
       end
       if !message.blank?

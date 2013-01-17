@@ -77,15 +77,16 @@ module AuthenticatedSystem
 
     # Store the URI of the current request in the session.
     #
-    # We can return to this location by calling #redirect_back_or_default.
+    # We can return to this location by calling #redirect_back_or_root.
     def store_location
+      debugger
       session[:return_to] = request.fullpath
     end
 
     # Redirect to the URI stored by the most recent store_location call or
     # to the passed default.
-    def redirect_back_or_default(default)
-      redirect_to(session[:return_to] || default)
+    def redirect_back_or_root
+      redirect_to(session[:return_to] || root_url(:protocol => 'http'))
       session[:return_to] = nil
     end
 

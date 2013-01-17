@@ -22,7 +22,7 @@ module AuthenticatedSystem
       cookies.delete :auth_token
       reset_session
       flash[:notice] = "You have been logged out."
-      redirect_back_or_default(root_url)
+      redirect_back_or_root
     end
     
     def shibboleth
@@ -33,7 +33,7 @@ module AuthenticatedSystem
       if logged_in?
         self.current_user.update_attribute(:shibboleth_id, self.shibboleth_id) if self.current_user.shibboleth_id.blank? && User.find_by_shibboleth_id(self.shibboleth_id).nil?
         flash[:notice] = "UVa credentials associated successfully."
-        redirect_back_or_default(root_url)
+        redirect_back_or_root
       elsif self.shibboleth_id.blank?
         failed_login
       else
@@ -48,7 +48,7 @@ module AuthenticatedSystem
           user.save
           self.current_user = user
           flash[:notice] = "UVa user created and logged in successfully."
-          redirect_back_or_default(root_url)
+          redirect_back_or_root
         else
           user.update_attribute(:shibboleth_id, self.shibboleth_id) if user.shibboleth_id.blank? && User.find_by_shibboleth_id(self.shibboleth_id).nil?
           self.current_user = user
@@ -95,7 +95,7 @@ module AuthenticatedSystem
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_back_or_default(root_url)
+      redirect_back_or_root
       flash[:notice] = "Logged in successfully"
     end
   end
