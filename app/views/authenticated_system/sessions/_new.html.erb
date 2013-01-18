@@ -4,7 +4,7 @@
 		<p>Log in with your <b>UVa account</b></p>
 	</div>
 	<div class='right-column'>
-		<p><%= link_to 'Log in', shibboleth_url, :class => 'emphasize' %></p>
+		<p><%= link_to 'Log in', shibboleth_url(:protocol => 'https'), :class => 'emphasize' %></p>
 		<p class='red-caption'>Recommended. More secure!</p>
 	</div>
 </fieldset>
