@@ -79,7 +79,6 @@ module AuthenticatedSystem
     #
     # We can return to this location by calling #redirect_back_or_root.
     def store_location
-      debugger
       session[:return_to] = request.fullpath
     end
 
