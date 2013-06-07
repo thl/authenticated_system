@@ -3,7 +3,7 @@
   <tr>
     <th><%= AuthenticatedSystem::Person.human_attribute_name(:fullname).s %></th>
     <th><%= AuthenticatedSystem::User.human_attribute_name(:login).s %></th>
-    <th><%= AuthenticatedSystem::User.model_name.human(:count => :many).titleize.s %></th>
+    <th><%= AuthenticatedSystem::Role.model_name.human(:count => :many).titleize.s %></th>
   </tr>
 <% can_edit = authorized? hash_for_edit_authenticated_system_person_path
    for person in @people %>

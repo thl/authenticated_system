@@ -26,9 +26,9 @@ module AclHelper
   def login_status
     if !in_frame?
       if !logged_in?
-        return "#{link_to 'Login', authenticated_system_login_path}.".html_safe
+        return "#{link_to 'Login', authenticated_system_login_path}".html_safe
       else
-        return "#{current_user.login}. #{link_to 'Logout', authenticated_system_logout_path}.".html_safe
+        return "#{current_user.login}. #{link_to 'Logout', authenticated_system_logout_path}".html_safe
       end
     else
       return ''
