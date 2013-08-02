@@ -6,13 +6,13 @@ class CreatePermissions < ActiveRecord::Migration
     end
     add_index :permissions, :title, :unique => true
     role = AuthenticatedSystem::Role.find(1)
-    p = AuthenticatedSystem::Permission.create :title => 'roles/index'
+    p = AuthenticatedSystem::Permission.create :title => 'authenticated_system/roles/index'
     role.permissions << p
-    p = AuthenticatedSystem::Permission.create :title => 'roles/show'
+    p = AuthenticatedSystem::Permission.create :title => 'authenticated_system/roles/show'
     role.permissions << p
-    p = AuthenticatedSystem::Permission.create :title => 'roles/edit'
+    p = AuthenticatedSystem::Permission.create :title => 'authenticated_system/roles/edit'
     role.permissions << p
-    p = AuthenticatedSystem::Permission.create :title => 'roles/update'
+    p = AuthenticatedSystem::Permission.create :title => 'authenticated_system/roles/update'
     role.permissions << p
     p = AuthenticatedSystem::Permission.create :title => 'main/admin'
     role.permissions << p
