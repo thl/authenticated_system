@@ -32,10 +32,10 @@ module AuthenticatedSystem
     
 
     validates_presence_of     :login, :email
-    validates_presence_of     :password,                   :if => :password_required?
-    validates_presence_of     :password_confirmation,      :if => :password_required?
-    validates_length_of       :password, :within => 4..40, :if => :password_required?
-    validates_confirmation_of :password,                   :if => :password_required?
+    #validates_presence_of     :password,                   :if => :password_required?
+    #validates_presence_of     :password_confirmation,      :if => :password_required?
+    #validates_length_of       :password, :within => 4..40, :if => :password_required?
+    validates_confirmation_of :password                    #:if => :password_required?
     validates_length_of       :login,    :within => 3..40
     validates_length_of       :email,    :within => 3..100
     validates_uniqueness_of   :login, :email, :case_sensitive => false
@@ -125,9 +125,9 @@ module AuthenticatedSystem
         self.crypted_password = encrypt(password)
       end
 
-      def password_required?
-        return false unless self.shibboleth_id.blank? && self.identity_url.blank?
-        crypted_password.blank? || !password.blank?
-      end
+      #def password_required?
+      #  return false unless self.shibboleth_id.blank? && self.identity_url.blank?
+      #  crypted_password.blank? || !password.blank?
+      #end
   end
 end
