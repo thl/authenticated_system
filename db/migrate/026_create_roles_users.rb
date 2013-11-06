@@ -1,6 +1,6 @@
 class CreateRolesUsers < ActiveRecord::Migration
   def self.up
-    create_table :roles_users, :options => 'ENGINE=MyISAM, CHARACTER SET=utf8 COLLATE=utf8_general_ci', :id => false do |t|
+    create_table :roles_users, :options => 'CHARACTER SET=utf8', :id => false do |t|
       t.column :role_id, :integer, :null => false
       t.column :user_id, :integer, :null => false
     end

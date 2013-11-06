@@ -1,6 +1,6 @@
 class CreatePermissions < ActiveRecord::Migration
   def self.up
-    create_table :permissions, :options => 'ENGINE=MyISAM, CHARACTER SET=utf8 COLLATE=utf8_general_ci' do |t|
+    create_table :permissions, :options => 'CHARACTER SET=utf8' do |t|
       t.column :title, :string, :limit => 60, :null => false
       t.column :description, :text
     end
