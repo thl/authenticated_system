@@ -20,7 +20,7 @@ padding:0pt 80px 0pt 0pt;
 position:absolute;
 right:0px;
 top:92px;
-z-index:0;
+z-index:1;
 }
 
 #login, #openid_url, #password {
