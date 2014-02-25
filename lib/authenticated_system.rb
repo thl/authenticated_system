@@ -79,7 +79,7 @@ module AuthenticatedSystem
     #
     # We can return to this location by calling #redirect_back_or_root.
     def store_location
-      session[:return_to] = request.fullpath
+      session[:return_to] = request.fullpath.dup.force_encoding(Encoding::UTF_8)
     end
 
     # Redirect to the URI stored by the most recent store_location call or
@@ -117,15 +117,15 @@ module AuthenticatedSystem
     end
     
     def shibboleth_id
-      request.env['REMOTE_USER']#.blank? ? session[:netbadgeid] : request.env['REMOTE_USER']
+      request.env['REMOTE_USER'].dup.force_encoding(Encoding::UTF_8)#.blank? ? session[:netbadgeid] : request.env['REMOTE_USER']
     end
     
     def shibboleth_fullname
-      "#{request.env['givenName']} #{request.env['sn']}"
+      "#{request.env['givenName'].dup.force_encoding(Encoding::UTF_8)} #{request.env['sn'].dup.force_encoding(Encoding::UTF_8)}"
     end
 
     def shibboleth_email
-      request.env['eppn']
+      request.env['eppn'].dup.force_encoding(Encoding::UTF_8)
     end
 end
 
