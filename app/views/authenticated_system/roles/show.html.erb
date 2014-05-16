@@ -1,5 +1,5 @@
 <%= display_if_not_blank AuthenticatedSystem::Role.human_attribute_name(:title).s, h(@role.title).s %>
-<%= display_if_not_blank AuthenticatedSystem::Role.human_attribute_name ('description').s, h(@role.description) %>
+<%= display_if_not_blank AuthenticatedSystem::Role.human_attribute_name(:description).s, h(@role.description) %>
 <% if !@permissions.empty? %>
      <p><b><%= AuthenticatedSystem::Permission.model_name.human(:count => :many).titleize.s %></b></p>
      <p>
