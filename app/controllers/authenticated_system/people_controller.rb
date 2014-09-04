@@ -40,7 +40,7 @@ module AuthenticatedSystem
     # POST /people
     # POST /people.xml
     def create
-      @person = Person.new(params[:person])
+      @person = Person.new(person_params)
 
       respond_to do |format|
         if @person.save
@@ -60,7 +60,7 @@ module AuthenticatedSystem
       @person = Person.find(params[:id])
 
       respond_to do |format|
-        if @person.update_attributes(params[:person])
+        if @person.update_attributes(person_params)
           flash[:notice] = ts('edit.successful', :what => Person.model_name.human.capitalize)
           format.html { redirect_to authenticated_system_person_url(@person) }
           format.xml  { head :ok }
@@ -81,6 +81,12 @@ module AuthenticatedSystem
         format.html { redirect_to authenticated_system_people_url }
         format.xml  { head :ok }
       end
+    end
+    
+    private
+    
+    def person_params
+      params.require(:person).permit(:fullname)
     end
   end
 end

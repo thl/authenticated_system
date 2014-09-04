@@ -40,7 +40,7 @@ module AuthenticatedSystem
     # POST /permissions
     # POST /permissions.xml
     def create
-      @permission = Permission.new(params[:permission])
+      @permission = Permission.new(permission_params)
 
       respond_to do |format|
         if @permission.save
@@ -60,7 +60,7 @@ module AuthenticatedSystem
       @permission = Permission.find(params[:id])
 
       respond_to do |format|
-        if @permission.update_attributes(params[:permission])
+        if @permission.update_attributes(permission_params)
           flash[:notice] = ts('edit.successful', :what => Permission.model_name.human.capitalize)
           format.html { redirect_to authenticated_system_permission_url(@permission) }
           format.xml  { head :ok }
@@ -81,6 +81,12 @@ module AuthenticatedSystem
         format.html { redirect_to authenticated_system_permissions_url }
         format.xml  { head :ok }
       end
+    end
+    
+    private
+    
+    def permission_params
+      params.require(:permission).permit(:title, :description)
     end
   end
 end

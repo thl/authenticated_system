@@ -5,12 +5,12 @@
     <th><%= AuthenticatedSystem::User.human_attribute_name(:login).s %></th>
     <th><%= AuthenticatedSystem::Role.model_name.human(:count => :many).titleize.s %></th>
   </tr>
-<% can_edit = authorized? hash_for_edit_authenticated_system_person_path
-   for person in @people %>
+<% for person in @people %>
   <tr>
     <td>
-<%  if can_edit %>
-<%=   link_to h(person.fullname).s, edit_authenticated_system_person_path(person) %>
+<%  path = edit_authenticated_system_person_path(person)
+    if authorized? path %>
+<%=   link_to h(person.fullname).s, path %>
 <%  else %>
 <%=   link_to h(person.fullname).s, authenticated_system_person_path(person) %>
 <%  end %>
@@ -18,12 +18,16 @@
 <%  user = person.user
     if !user.nil? %>
       <td>
-<%	  if authorized? hash_for_edit_authenticated_system_person_user_path %>
-<%=     link_to(h(user.login), edit_authenticated_system_person_user_path(person)) %>
+<%	  path = edit_authenticated_system_person_user_path(person)
+      if authorized? path %>
+<%=     link_to(h(user.login), path) %>
 <%    else %>
 <%=     link_to(h(user.login), authenticated_system_person_user_path(person)) %>
 <%    end %></td>
-      <td><%= user.roles.collect{|r| authorized?(hash_for_authenticated_system_role_path) ? link_to(h(r.title), authenticated_system_role_path(r)) : r.title }.join(', ').html_safe %></td>
+      <td><%= user.roles.collect do |r|
+		        path = authenticated_system_role_path(r)
+		        authorized?(path) ? link_to(h(r.title), path) : r.title
+			  end.join(', ').html_safe %></td>
 <%  else %>
       <td colspan="2"><%= link_to ts('new.record', :what => AuthenticatedSystem::User.model_name.human), new_authenticated_system_person_user_path(person) %></td>
 <%  end %>
@@ -31,8 +35,9 @@
 <% end %>
 </table>
 <p>&nbsp;<br/>
-<% if authorized? hash_for_new_authenticated_system_person_path %>
-<%=  link_to ts('new.record', :what => AuthenticatedSystem::Person.model_name.human), new_authenticated_system_person_path %> |
+<% path = new_authenticated_system_person_path
+   if authorized? path %>
+<%=  link_to ts('new.record', :what => AuthenticatedSystem::Person.model_name.human), path %> |
 <% end %>
 <%= link_to ts('back.to', :what => t('home.this')), root_path %>
 </p>

@@ -1,8 +1,9 @@
-<%  if !@person.user.nil? && authorized?(hash_for_edit_authenticated_system_person_user_path) %>
+<%  if !@person.user.nil? && authorized?(authenticated_system_person_user_path) %>
 <%=   link_to ts('edit.record', :what => AuthenticatedSystem::User.model_name.human), edit_authenticated_system_person_user_path(@person) %> |
 <%  end
-    if authorized? hash_for_authenticated_system_person_path(:action => 'destroy') %>
-<%=   link_to ts('delete.this'), authenticated_system_person_path(@person), :confirm => te('delete.confirmation'), :method => :delete %> |
+    path = authenticated_system_person_path(@person)
+    if authorized?(Rails.application.routes.recognize_path(path).merge(:action => 'destroy')) %>
+<%=   link_to ts('delete.this'), path, method: :delete, data: { confirm: te('delete.confirmation') } %> |
 <%  end %>
 <%= link_to ts('back.to', :what => t('all.records', :what => AuthenticatedSystem::Person.model_name.human(:count => :many))), authenticated_system_people_path %> |
 <%= link_to ts('back.to', :what => t('home.this')), root_path %>

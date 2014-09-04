@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   namespace :authenticated_system do
-    match 'login' => 'sessions#new', :as => :login
-    match 'logout' => 'sessions#destroy', :as => :logout
-    match 'show_login' => 'sessions#show', :as => :show_login
-    match 'session' => 'sessions#create', :as => :open_id_login, :via => :get
+    get 'login', to: 'sessions#new', as: :login
+    get 'logout', to: 'sessions#destroy', as: :logout
+    get 'show_login', to: 'sessions#show', as: :show_login
+    get 'session', to: 'sessions#create', as: :open_id_login
     resource :session
     resources :people do
       resource :user
     end
-    root :to => 'admin#index'
+    root to: 'admin#index'
     resources :permissions, :roles
-    match 'openid_create' => 'users#create', :as => :openid_create, :via => :post
-    match 'openid_new' => 'users#openid_new', :as => :openid_new
+    post 'openid_create', to: 'users#create', as: :openid_create
+    get 'openid_new', to: 'users#openid_new', as: :openid_new
   end
-  match 'shibboleth' => 'authenticated_system/sessions#shibboleth', :constraints => { :protocol=> 'https://' }, :as => :shibboleth
+  get 'shibboleth', to: 'authenticated_system/sessions#shibboleth', constraints: { protocol: 'https://' }, as: :shibboleth
 end

@@ -1,6 +1,6 @@
 module AuthenticatedSystem
   class UsersController < AclController
-    before_filter :find_person, :except => 'index'
+    before_action :find_person, :except => 'index'
 
     def initialize
       super
@@ -44,7 +44,7 @@ module AuthenticatedSystem
       if using_open_id?
         authenticate_with_open_id(params['openid_url'], :required => [:nickname, :email]) do |result, identity_url, registration|
           if result.successful?
-            @user = User.find_by_identity_url(identity_url)
+            @user = User.where(identity_url: identity_url).first
             if @user.nil?
               @user = User.new do |u|
                 u.identity_url = identity_url
@@ -63,7 +63,7 @@ module AuthenticatedSystem
           end        
         end
       else
-        @user = @person.build_user(params[:authenticated_system_user])
+        @user = @person.build_user(user_params)
         @user.save!
         update_roles(params[:associated_options])
         flash[:notice] = "User succesfully created!"
@@ -80,7 +80,7 @@ module AuthenticatedSystem
       @user = @person.user
       update_roles(params[:associated_options])
       respond_to do |format|
-        if @user.update_attributes(params[:authenticated_system_user])
+        if @user.update_attributes(user_params)
           flash[:notice] = 'User was successfully updated.'
           format.html { redirect_to authenticated_system_people_url }
           format.xml  { head :ok }
@@ -128,6 +128,10 @@ module AuthenticatedSystem
     def find_person
       person_id = params[:person_id]
       @person = person_id.blank? ? nil : Person.find(person_id)
-    end  
+    end
+    
+    def user_params
+      params.require(:authenticated_system_user).permit(:login, :email, :password, :password_confirmation, :identity_url)
+    end
   end
 end

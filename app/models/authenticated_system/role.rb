@@ -11,14 +11,12 @@
 
 module AuthenticatedSystem
   class Role < ActiveRecord::Base
-    attr_accessible :title, :description
-    
     before_destroy do |record|
       record.permissions.clear
       record.users.clear
     end    
     
-    has_and_belongs_to_many :permissions, :order => 'title'
+    has_and_belongs_to_many :permissions, -> { order 'title' }
     has_and_belongs_to_many :users
   end
 end

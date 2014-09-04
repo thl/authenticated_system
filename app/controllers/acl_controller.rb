@@ -14,7 +14,7 @@ class AclController < ApplicationController
   #      end
   #    end
   #
-  before_filter :authorize
+  before_action :authorize
 
   def initialize
     super

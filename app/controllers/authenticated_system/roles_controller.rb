@@ -46,7 +46,7 @@ module AuthenticatedSystem
     # POST /roles
     # POST /roles.xml
     def create
-      @role = Role.new(params[:role])
+      @role = Role.new(role_params)
       respond_to do |format|
         if @role.save
           update_permissions
@@ -66,7 +66,7 @@ module AuthenticatedSystem
     def update
       @role = Role.find(params[:id])
       respond_to do |format|
-        if @role.update_attributes(params[:role])
+        if @role.update_attributes(role_params)
           update_permissions
           flash[:notice] = ts('edit.successful', :what => Role.model_name.human.capitalize)
           format.html { redirect_to authenticated_system_role_url(@role) }
@@ -94,7 +94,7 @@ module AuthenticatedSystem
     private
 
     def update_permissions
-      role_permissions = params[:associated_options]
+      role_permissions = params.require(:associated_options)
       if role_permissions.nil?
         new_permissions = []
       else
@@ -107,6 +107,10 @@ module AuthenticatedSystem
 
       permissions_to_delete = already_assigned_permissions - new_permissions
       permissions_to_delete.each {|permission_id| @role.permissions.delete(Permission.find(permission_id))}
+    end
+    
+    def role_params
+      params.require(:role).permit(:title, :description)
     end
   end
 end

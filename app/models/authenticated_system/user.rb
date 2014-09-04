@@ -24,12 +24,10 @@ module AuthenticatedSystem
     before_save { |record| record.encrypt_password }
     
     belongs_to :person
-    has_and_belongs_to_many :roles, :order => 'title'
+    has_and_belongs_to_many :roles, -> { order 'title' }
 
     # Virtual attribute for the unencrypted password
     attr_accessor :password
-    attr_accessible :identity_url, :login, :email
-    
 
     validates_presence_of     :login, :email
     #validates_presence_of     :password,                   :if => :password_required?
@@ -42,7 +40,6 @@ module AuthenticatedSystem
 
     # prevents a user from submitting a crafted form that bypasses activation
     # anything else you want your user to change should be added here.
-    attr_accessible :login, :email, :password, :password_confirmation, :identity_url
 
     def screen_name
       if person.nil?
@@ -52,7 +49,6 @@ module AuthenticatedSystem
       end
     end
 
-    # has_and_belongs_to_many :roles, :order => 'title'
     # Some annoying naming conflict, but HABTM doesn't work, probably conflicting with OpenID gem.   
     def roles
       Role.find_by_sql(['SELECT roles.* FROM roles, roles_users WHERE roles.id = roles_users.role_id AND roles_users.user_id = ?', id])
@@ -60,7 +56,7 @@ module AuthenticatedSystem
 
     # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
     def self.authenticate(login, password)
-      u = find_by_login(login) # need to get the salt
+      u = self.where(login: login).first # need to get the salt
       u && u.authenticated?(password) ? u : nil
     end
 

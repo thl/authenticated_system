@@ -1,12 +1,15 @@
 <h1>User Management</h1>
 <ul class="main_list">
-<% if authorized? hash_for_authenticated_system_people_path %>
-	<li><%= link_to AuthenticatedSystem::Person.model_name.human(:count => :many).titleize.s, authenticated_system_people_path %></li>
+<% path = authenticated_system_people_path
+   if authorized? path %>
+	<li><%= link_to AuthenticatedSystem::Person.model_name.human(:count => :many).titleize.s, path %></li>
 <% end
-   if authorized? hash_for_authenticated_system_permissions_path %>
-	<li><%= link_to AuthenticatedSystem::Permission.model_name.human(:count => :many).titleize.s, authenticated_system_permissions_path %></li>
+   path = authenticated_system_permissions_path
+   if authorized? path %>
+	<li><%= link_to AuthenticatedSystem::Permission.model_name.human(:count => :many).titleize.s, path %></li>
 <% end
-   if authorized? hash_for_authenticated_system_roles_path %>
-	<li><%= link_to AuthenticatedSystem::Role.model_name.human(:count => :many).titleize.s, authenticated_system_roles_path %></li>
+   path = authenticated_system_roles_path
+   if authorized? path %>
+	<li><%= link_to AuthenticatedSystem::Role.model_name.human(:count => :many).titleize.s, path %></li>
 <% end %>
 </ul>

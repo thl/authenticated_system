@@ -41,15 +41,15 @@ module AuthenticatedSystem
     #
     # To require logins for all actions, use this in your controllers:
     #
-    #   before_filter :login_required
+    #   before_action :login_required
     #
     # To require logins for specific actions, use this in your controllers:
     #
-    #   before_filter :login_required, :only => [ :edit, :update ]
+    #   before_action :login_required, :only => [ :edit, :update ]
     #
     # To skip this in a subclassed controller:
     #
-    #   skip_before_filter :login_required
+    #   skip_before_action :login_required
     #
     def login_required
       authorized? || access_denied
@@ -97,7 +97,7 @@ module AuthenticatedSystem
 
     # Called from #current_user.  First attempt to login by the user id stored in the session.
     def login_from_session
-      self.current_user = User.find_by_login(session[:login]) if session[:login]
+      self.current_user = User.where(login: session[:login]).first if session[:login]
     end
 
     # Called from #current_user.  Now, attempt to login by basic authentication information.
@@ -109,7 +109,7 @@ module AuthenticatedSystem
 
     # Called from #current_user.  Finaly, attempt to login by an expiring token in the cookie.
     def login_from_cookie
-      user = cookies[:auth_token] && User.find_by_remember_token(cookies[:auth_token])
+      user = cookies[:auth_token] && User.where(remember_token: cookies[:auth_token]).first
       if user && user.remember_token?
         cookies[:auth_token] = { :value => user.remember_token, :expires => user.remember_token_expires_at }
         self.current_user = user

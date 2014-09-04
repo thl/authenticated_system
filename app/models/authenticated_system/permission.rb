@@ -20,10 +20,7 @@
 #
 module AuthenticatedSystem  
   class Permission < ActiveRecord::Base
-    attr_accessible :title, :description
-    
     before_destroy { |record| record.roles.clear }
-    
     has_and_belongs_to_many :roles
 
     # Ensure that the table has one entry for each controller/action pair

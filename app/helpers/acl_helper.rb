@@ -1,12 +1,13 @@
 module AclHelper
   def authorized?(resource)
     if resource.class==String
-      required_perm = resource
+      resource_hash = Rails.application.routes.recognize_path resource
     elsif resource.class==Hash
-      required_perm = "#{resource[:controller]}/#{resource[:action]}"
+      resource_hash = resource
     else
       return false
     end
+    required_perm = "#{resource_hash[:controller]}/#{resource_hash[:action]}"
     return logged_in? && current_user.authorized?(required_perm)
   end
   

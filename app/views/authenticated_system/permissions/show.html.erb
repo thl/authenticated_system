@@ -2,6 +2,6 @@
 <%= display_if_not_blank AuthenticatedSystem::Permission.human_attribute_name(:description).s, h(@permission.description) %>
 <p>
 <%= link_to ts('edit.this'), edit_authenticated_system_permission_path(@permission) %> |
-<%= link_to ts('delete.this'), authenticated_system_permission_path(@permission), :confirm => te('delete.confirmation'), :method => :delete %> |
+<%= link_to ts('delete.this'), authenticated_system_permission_path(@permission), method: :delete, data: { confirm: te('delete.confirmation') } %> |
 <%= link_to ts('back.this'), authenticated_system_permissions_path %>
 </p>
