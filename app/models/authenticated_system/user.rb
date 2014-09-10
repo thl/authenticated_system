@@ -56,7 +56,7 @@ module AuthenticatedSystem
 
     # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
     def self.authenticate(login, password)
-      u = self.where(login: login).first # need to get the salt
+      u = self.find_by(login: login) # need to get the salt
       u && u.authenticated?(password) ? u : nil
     end
 

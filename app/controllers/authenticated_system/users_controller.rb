@@ -44,7 +44,7 @@ module AuthenticatedSystem
       if using_open_id?
         authenticate_with_open_id(params['openid_url'], :required => [:nickname, :email]) do |result, identity_url, registration|
           if result.successful?
-            @user = User.where(identity_url: identity_url).first
+            @user = User.find_by(identity_url: identity_url)
             if @user.nil?
               @user = User.new do |u|
                 u.identity_url = identity_url

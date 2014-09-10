@@ -31,13 +31,13 @@ module AuthenticatedSystem
       session['REMOTE_USER'] = self.shibboleth_id
 
       if logged_in?
-        self.current_user.update_attribute(:shibboleth_id, self.shibboleth_id) if self.current_user.shibboleth_id.blank? && User.where(shibboleth_id: self.shibboleth_id).first.nil?
+        self.current_user.update_attribute(:shibboleth_id, self.shibboleth_id) if self.current_user.shibboleth_id.blank? && User.find_by(shibboleth_id: self.shibboleth_id).nil?
         flash[:notice] = "UVa credentials associated successfully."
         redirect_back_or_root
       elsif self.shibboleth_id.blank?
         failed_login
       else
-        user = User.where(shibboleth_id: self.shibboleth_id).first || User.where(email: "#{self.shibboleth_id}@virginia.edu").first
+        user = User.find_by(shibboleth_id: self.shibboleth_id) || User.find_by(email: "#{self.shibboleth_id}@virginia.edu")
         if user.nil?
           # go back to regular http
           #redirect_to signup_netbadge_url
@@ -50,7 +50,7 @@ module AuthenticatedSystem
           flash[:notice] = "UVa user created and logged in successfully."
           redirect_back_or_root
         else
-          user.update_attribute(:shibboleth_id, self.shibboleth_id) if user.shibboleth_id.blank? && User.where(shibboleth_id: self.shibboleth_id).first.nil?
+          user.update_attribute(:shibboleth_id, self.shibboleth_id) if user.shibboleth_id.blank? && User.find_by(shibboleth_id: self.shibboleth_id).nil?
           self.current_user = user
           # redirect_to me_url
           successful_login
@@ -63,7 +63,7 @@ module AuthenticatedSystem
     def open_id_authentication(openid_url)
       authenticate_with_open_id(openid_url, :required => [:nickname, :email]) do |result, identity_url, registration|
         if result.successful?
-          @user = User.where(identity_url: identity_url).first
+          @user = User.find_by(identity_url: identity_url)
           if @user.nil?
             failed_login result.message
           else
