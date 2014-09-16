@@ -1,5 +1,5 @@
 <%  path = authenticated_system_person_user_path(@person)
-    if authorized?(Rails.application.routes.recognize_path(path).merge(:action => 'destroy')) %>
+    if authorized?(path, :action => 'destroy') %>
 <%=   link_to ts('delete.this'), path, method: :delete, data: { confirm: te('delete.confirmation') } %> |
 <%  end %>
 <%= link_to ts('back.to', :what => t('all.records', :what => AuthenticatedSystem::Person.model_name.human(:count => :many))), authenticated_system_people_path %> |

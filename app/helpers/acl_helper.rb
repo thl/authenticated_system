@@ -1,18 +1,22 @@
 module AclHelper
-  def authorized?(resource)
+  def authorized?(resource, options = {})
     if resource.class==String
-      resource_hash = Rails.application.routes.recognize_path resource
+      app = Rails.application
+      relative_root = app.config.relative_url_root
+      resource = resource[relative_root.size..resource.size] if !relative_root.blank?
+      resource_hash = app.routes.recognize_path resource
     elsif resource.class==Hash
       resource_hash = resource
     else
       return false
     end
+    resource_hash.merge! options
     required_perm = "#{resource_hash[:controller]}/#{resource_hash[:action]}"
     return logged_in? && current_user.authorized?(required_perm)
   end
   
-  def authorized_only(resource)
-    yield if authorized?(resource)
+  def authorized_only(resource, options = {})
+    yield if authorized?(resource, options)
   end
   
   def authorized_link_to(name, options)
