@@ -1,4 +1,4 @@
-<%  if !@person.user.nil? && authorized?(authenticated_system_person_user_path) %>
+<%  if !@person.user.nil? && authorized?(authenticated_system_person_user_path(@person)) %>
 <%=   link_to ts('edit.record', :what => AuthenticatedSystem::User.model_name.human), edit_authenticated_system_person_user_path(@person) %> |
 <%  end
     path = authenticated_system_person_path(@person)
