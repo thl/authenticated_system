@@ -7,7 +7,7 @@ module AuthenticatedSystem
 
     # render new.js.erb
     def new
-      store_previous_location
+      store_previous_location if previous_location.nil?
     end
 
     def create

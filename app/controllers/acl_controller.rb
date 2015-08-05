@@ -31,6 +31,7 @@ class AclController < ApplicationController
   # Authorizes the user for an action.
   def authorize
     required_perm = "#{controller_path}/#{action_name}"
+    reset_previous_location
     unless @guest_perms.include? required_perm
       message = String.new
       unless logged_in?
