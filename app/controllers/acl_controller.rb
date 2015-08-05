@@ -51,11 +51,12 @@ class AclController < ApplicationController
           render :text => "<p style=\"color: green\">#{message}</p>"
         else
           flash[:notice] = message
-          begin
-            redirect_to :back
-          rescue ActionController::RedirectBackError
-            redirect_to root_url
-          end
+          access_denied
+#          begin
+#            redirect_to :back
+#          rescue ActionController::RedirectBackError
+#            redirect_to root_url
+#          end
         end
         return false
       end

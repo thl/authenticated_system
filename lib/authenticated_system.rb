@@ -75,6 +75,10 @@ module AuthenticatedSystem
       end
     end
 
+    def store_previous_location
+      session[:return_to] = request.referrer
+    end
+
     # Store the URI of the current request in the session.
     #
     # We can return to this location by calling #redirect_back_or_root.

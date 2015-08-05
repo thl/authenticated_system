@@ -7,6 +7,7 @@ module AuthenticatedSystem
 
     # render new.js.erb
     def new
+      store_previous_location
     end
 
     def create
@@ -21,6 +22,7 @@ module AuthenticatedSystem
       self.current_user.forget_me if logged_in?
       cookies.delete :auth_token
       reset_session
+      store_previous_location
       flash[:notice] = "You have been logged out."
       redirect_back_or_root
     end
