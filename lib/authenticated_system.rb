@@ -66,8 +66,12 @@ module AuthenticatedSystem
     def access_denied
       respond_to do |format|
         format.html do
-          store_location
-          redirect_to new_authenticated_system_session_path
+          if logged_in?
+            redirect_to root_url(:protocol => 'http')
+          else
+            store_location
+            redirect_to new_authenticated_system_session_url
+          end
         end
         format.any do
           request_http_basic_authentication 'Web Password'
