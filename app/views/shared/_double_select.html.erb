@@ -14,7 +14,7 @@
     </td>
     <td width="40%" rowspan="3" align="right">
       <h3><label for="associated_options"><%= associated_options_title %></label></h3>
-      <select id="associated_options" name="associated_options[]" multiple = "multiple" size="10">
+      <select id="associated_options" name="<%= defined?(associated_options_tag) && !associated_options_tag.blank? ? associated_options_tag : 'associated_options' %>[]" multiple = "multiple" size="10">
         <%= options_for_select(associated_options) %>
       </select><br/>
       <input name="select_all_associated" type="button" onclick="selectAll('associated_options')" value="<%= te('select.all') %>"/>

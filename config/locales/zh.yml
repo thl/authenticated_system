@@ -12,7 +12,9 @@ zh:
             authenticated_system/role:
                 one: '职能'
                 other: '职能 (复数)'
-            user: '用户'
+            user:
+                one: '用户'
+                other: 'users'
         # Attribute names will be titleized.
         attributes:
             authenticated_system/permission:

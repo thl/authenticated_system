@@ -12,7 +12,9 @@ bo:
             authenticated_system/role:
                 one: 'འོས་འགན'
                 other: 'འོས་འགན་དག་'
-            authenticated_system/user: 'སྤྱོད་མཁན།'
+            authenticated_system/user:
+                one: 'སྤྱོད་མཁན།'
+                other: 'སྤྱོད་མཁན་དག་'
         # Attribute names will be titleized.
         attributes:
             authenticated_system/permission:

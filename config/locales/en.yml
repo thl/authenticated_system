@@ -12,7 +12,9 @@ en:
             authenticated_system/role:
                 one: 'role'
                 other: 'roles'
-            authenticated_system/user: 'user'
+            authenticated_system/user:
+                one: 'user'
+                other: 'users'
         # Attribute names will be titleized.
         attributes:
             authenticated_system/permission:

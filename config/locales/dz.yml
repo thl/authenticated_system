@@ -12,7 +12,9 @@ dz:
             authenticated_system/role:
                 one: 'ལས་འགན།'
                 other: 'ལས་འགན་ཚུ།'
-            authenticated_system/user: 'ལག་ལེན་པ།'
+            authenticated_system/user:
+                one: 'ལག་ལེན་པ།'
+                other: 'ལག་ལེན་པ་ཚུ།'
         # Attribute names will be titleized.
         attributes:
             authenticated_system/permission:
