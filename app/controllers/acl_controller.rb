@@ -53,11 +53,7 @@ class AclController < ApplicationController
         else
           flash[:notice] = message
           access_denied
-#          begin
-#            redirect_to :back
-#          rescue ActionController::RedirectBackError
-#            redirect_to root_url
-#          end
+          # redirect_back fallback_location: root_url
         end
         return false
       end
