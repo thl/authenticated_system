@@ -1,15 +1,4 @@
 # == Schema Information
-#
-# Table name: permissions
-#
-#  id          :integer          not null, primary key
-#  title       :string(60)       not null
-#  description :text
-#  created_at  :datetime
-#  updated_at  :datetime
-#
-
-# == Schema Information
 # Schema version: 20090626173648
 #
 # Table name: permissions
@@ -35,7 +24,7 @@ module AuthenticatedSystem
       bogus_db_actions = known_actions - all_actions
       missing_from_db = all_actions - known_actions
       missing_from_db.each { |action_path| self.create :title => action_path }
-      self.destroy_all(:title => bogus_db_actions) unless bogus_db_actions.empty? || all_actions.empty? || bogus_db_actions.length > all_actions.length / 2
+      self.where(title: bogus_db_actions).destroy_all unless bogus_db_actions.empty? || all_actions.empty? || bogus_db_actions.length > all_actions.length / 2
     end
   end
 end
