@@ -133,15 +133,15 @@ module AuthenticatedSystem
     end
     
     def shibboleth_id
-      request.env['REMOTE_USER']#.blank? ? session[:netbadgeid] : request.env['REMOTE_USER']
+      request.env['HTTP_REMOTE_USER']#.blank? ? session[:netbadgeid] : request.env['HTTP_REMOTE_USER']
     end
     
     def shibboleth_fullname
-      "#{request.env['givenName']} #{request.env['sn']}"
+      "#{request.env['HTTP_GIVENNAME']} #{request.env['HTTP_SN']}"
     end
 
     def shibboleth_email
-      request.env['eppn']
+      request.env['HTTP_EPPN']
     end
 end
 
