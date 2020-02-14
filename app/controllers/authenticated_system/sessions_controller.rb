@@ -30,6 +30,7 @@ module AuthenticatedSystem
     def shibboleth
       # save the REMOTE_USER is the session so we know how this session was authenticated
       # this is used by the sign up action
+      Rails.logger.fatal request.env
       Rails.logger.fatal "SHIBBOLET-DJRC"
       session['REMOTE_USER'] = self.shibboleth_id
 
