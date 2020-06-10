@@ -125,7 +125,6 @@ PLATFORMS
 DEPENDENCIES
   authenticated_system!
   jquery-rails
-  rails (~> 5.2.3)
 
 BUNDLED WITH
    2.1.4
