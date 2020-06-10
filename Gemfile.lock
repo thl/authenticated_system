@@ -128,4 +128,4 @@ DEPENDENCIES
   rails (~> 5.2.3)
 
 BUNDLED WITH
-   1.17.3
+   2.1.4
