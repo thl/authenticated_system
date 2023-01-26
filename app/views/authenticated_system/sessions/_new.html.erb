@@ -12,29 +12,22 @@
 <p>&nbsp;</p>
 <div class='login-box'>
 <fieldset>
-	<%= form_tag authenticated_system_session_path do -%>
+<%= form_tag authenticated_system_session_path do -%>
 	<div class='left-column'>
-		<p>&nbsp;</p>
-        <p><label for="openid_url">Login with <%= AuthenticatedSystem::User.human_attribute_name(:identity_url).s %></label><br/>
-		<%=  text_field_tag 'openid_url' %></p>
-	</div>
-	<div class='center-column'>
      <p align="center"><b>Non-UVa User</b></p>
-     <br/>
-	 <p align='center'>OR</p>
-	 <p>&nbsp;</p>
-	 <p>&nbsp;</p>
-     <p align="center"><label for="remember_me">Remember me:</label>
-	<%=  check_box_tag 'remember_me' %></p>
-     <p align="center"><%= submit_tag 'Login' %></p>	
-	</div>
-	<div class='right-column'>
-     <p>&nbsp;</p>
      <p><label for="login"><%= AuthenticatedSystem::User.human_attribute_name(:login).s %></label><br/>
 <%=  text_field_tag 'login' %></p>
      <p><label for="password"><%= AuthenticatedSystem::User.human_attribute_name(:password).s %></label><br/>
 <%=  password_field_tag 'password' %></p>
-    </div>
-	<% end -%>
+	</div>
+	<div class='right-column'>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+     <p><%= submit_tag 'Login' %></p>
+     <p><label for="remember_me">Remember me: <%=  check_box_tag 'remember_me' %></label></p>
+	</div>
+<% end -%>
 </fieldset>
 </div>

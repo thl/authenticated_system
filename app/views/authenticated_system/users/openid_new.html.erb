@@ -1,9 +1,0 @@
-<h1>Create User Account</h1>
-<%= form_tag(authenticated_system_openid_create_path) do -%>
-<p>
-    <label for="openid_url">OpenID URL</label><br/>
-    <%= text_field_tag 'openid_url' %>
-</p>
-<p>Not using OpenID? <%= link_to 'Skip this step.', new_authenticated_system_person_user_path(@person) %></p>
-<p><%= globalized_submit_tag 'Create user' %></p>
-<% end -%>

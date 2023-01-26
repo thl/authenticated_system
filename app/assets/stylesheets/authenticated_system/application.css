@@ -23,7 +23,7 @@ top:92px;
 z-index:1;
 }
 
-#login, #openid_url, #password {
+#login, #password {
 	width: 200px;
 	color: #555555;
     padding: 3px 4px;

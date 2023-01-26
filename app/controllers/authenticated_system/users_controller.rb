@@ -35,40 +35,14 @@ module AuthenticatedSystem
       @roles = Role.order('title')
     end
 
-    def openid_new
-    end
-
     # POST /people/1/user
     # POST /people/1/user.xml
     def create
-      if using_open_id?
-        authenticate_with_open_id(params['openid_url'], :required => [:nickname, :email]) do |result, identity_url, registration|
-          if result.successful?
-            @user = User.find_by(identity_url: identity_url)
-            if @user.nil?
-              @user = User.new do |u|
-                u.identity_url = identity_url
-                u.login = registration['nickname']
-                u.email = registration['email']
-              end
-              @roles = Role.order('title')
-              render :action => 'new'
-            else
-              flash[:notice] = "Identity URL already used by another user!"
-              render :action => 'openid_new'
-            end
-          else
-            flash[:notice] = "Could not validate identity URL!"
-            render :action => 'openid_new'
-          end        
-        end
-      else
-        @user = @person.build_user(user_params)
-        @user.save!
-        update_roles(params[:associated_options])
-        flash[:notice] = "User succesfully created!"
-        redirect_to authenticated_system_person_url(@person)
-      end
+      @user = @person.build_user(user_params)
+      @user.save!
+      update_roles(params[:associated_options])
+      flash[:notice] = "User succesfully created!"
+      redirect_to authenticated_system_person_url(@person)
     rescue ActiveRecord::RecordInvalid
       @roles = Role.order('title')
       render :action => 'new'
