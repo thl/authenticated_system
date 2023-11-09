@@ -1,5 +1,5 @@
 module AclHelper
-  def authorized?(resource, options = {})
+  def authorized?(resource, **options)
     if resource.class==String
       app = Rails.application
       relative_root = app.config.relative_url_root
@@ -15,13 +15,13 @@ module AclHelper
     return logged_in? && current_user.authorized?(required_perm)
   end
   
-  def authorized_only(resource, options = {})
+  def authorized_only(resource, **options)
     yield if authorized?(resource, options)
   end
   
-  def authorized_link_to(name, options)
-    if authorized?(options)
-      return link_to(name, options)
+  def authorized_link_to(name, **options)
+    if authorized?(**options)
+      return link_to(name, **options)
     else
       return ''
     end
