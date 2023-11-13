@@ -66,7 +66,7 @@ module AuthenticatedSystem
     def update
       @role = Role.find(params[:id])
       respond_to do |format|
-        if @role.update_attributes(role_params)
+        if @role.update(role_params)
           update_permissions
           flash[:notice] = ts('edit.successful', :what => Role.model_name.human.capitalize)
           format.html { redirect_to authenticated_system_role_url(@role) }

@@ -54,7 +54,7 @@ module AuthenticatedSystem
       @user = @person.user
       update_roles(params[:associated_options])
       respond_to do |format|
-        if @user.update_attributes(user_params)
+        if @user.update(user_params)
           flash[:notice] = 'User was successfully updated.'
           format.html { redirect_to authenticated_system_people_url }
           format.xml  { head :ok }

@@ -60,7 +60,7 @@ module AuthenticatedSystem
       @person = Person.find(params[:id])
 
       respond_to do |format|
-        if @person.update_attributes(person_params)
+        if @person.update(person_params)
           flash[:notice] = ts('edit.successful', :what => Person.model_name.human.capitalize)
           format.html { redirect_to authenticated_system_person_url(@person) }
           format.xml  { head :ok }

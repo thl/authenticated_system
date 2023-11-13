@@ -60,7 +60,7 @@ module AuthenticatedSystem
       @permission = Permission.find(params[:id])
 
       respond_to do |format|
-        if @permission.update_attributes(permission_params)
+        if @permission.update(permission_params)
           flash[:notice] = ts('edit.successful', :what => Permission.model_name.human.capitalize)
           format.html { redirect_to authenticated_system_permission_url(@permission) }
           format.xml  { head :ok }
