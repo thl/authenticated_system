@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    authenticated_system (2.4.5)
-      rails (~> 7.0)
+    authenticated_system (2.4.6)
+      rails
 
 GEM
   remote: https://rubygems.org/
