@@ -105,11 +105,7 @@ module AuthenticatedSystem
     end
     
     def user_params
-      if defined?(super)
-        super
-      else
-        params.require(:authenticated_system_user).permit(:login, :email, :password, :password_confirmation, :identity_url)
-      end
+      params.require(:authenticated_system_user).permit(:login, :email, :password, :password_confirmation, :identity_url)
     end
   end
   
