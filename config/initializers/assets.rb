@@ -1,0 +1,1 @@
+Rails.application.config.assets.precompile << 'authenticated_system/select.js'
