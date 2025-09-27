@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    authenticated_system (2.4.9)
+    authenticated_system (2.5.0)
+      bcrypt (~> 3.1)
       rails
 
 GEM
@@ -78,7 +79,11 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
+    annotate (2.6.5)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     base64 (0.3.0)
+    bcrypt (3.1.20)
     benchmark (0.4.1)
     bigdecimal (3.2.3)
     builder (3.3.0)
@@ -217,6 +222,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   authenticated_system!
   jquery-rails
   pg (= 1.5.9)

@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails'
   # s.add_dependency "jquery-rails"
+  s.add_dependency 'bcrypt', '~> 3.1'
 end

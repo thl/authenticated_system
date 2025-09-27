@@ -5,8 +5,10 @@
 #  id          :integer          not null, primary key
 #  title       :string(20)       not null
 #  description :text
-#  created_at  :datetime
-#  updated_at  :datetime
+#
+# Indexes
+#
+#  index_roles_on_title  (title) UNIQUE
 #
 
 module AuthenticatedSystem

@@ -2,11 +2,10 @@
 #
 # Table name: people
 #
-#  id         :integer          not null, primary key
-#  fullname   :string(255)      not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id       :integer          not null, primary key
+#  fullname :string           not null
 #
+
 
 # == Schema Information
 # Schema version: 20090626173648

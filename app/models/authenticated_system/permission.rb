@@ -1,12 +1,16 @@
 # == Schema Information
-# Schema version: 20090626173648
 #
 # Table name: permissions
 #
-#  id          :integer(4)      not null, primary key
-#  title       :string(60)      not null
+#  id          :integer          not null, primary key
+#  title       :string(60)       not null
 #  description :text
 #
+# Indexes
+#
+#  index_permissions_on_title  (title) UNIQUE
+#
+
 module AuthenticatedSystem  
   class Permission < ActiveRecord::Base
     before_destroy { |record| record.roles.clear }
