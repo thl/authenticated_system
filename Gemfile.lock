@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    authenticated_system (2.5.1)
+    authenticated_system (2.5.2)
       bcrypt (~> 3.1)
       rails
 
