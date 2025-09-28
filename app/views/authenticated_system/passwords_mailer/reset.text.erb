@@ -1,0 +1,2 @@
+You can reset your password for <%= Rails.application.config.action_mailer.default_url_options[:host] %> within the next 15 minutes on this password reset page:
+<%= edit_authenticated_system_password_url(@user.password_reset_token) %>

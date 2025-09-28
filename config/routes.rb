@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get 'logout', to: 'sessions#destroy', as: :logout
     get 'show_login', to: 'sessions#show', as: :show_login
     resource :session
+    resources :passwords, param: :token
     resources :people do
       resource :user
     end
