@@ -1,5 +1,5 @@
-<% if logged_in? %>
-<i><%= current_user.login %></i> (<%= link_to ts('sign.out'), authenticated_system_logout_path %>).
+<% if authenticated? %>
+<i><%= AuthenticatedSystem::Current.user.login %></i> (<%= link_to ts('sign.out'), authenticated_system_logout_path %>).
 <% else %>
 <%=  ts(:member) %> <%= link_to ts('sign.in'), authenticated_system_login_path, :remote => true %>
 <% end %>

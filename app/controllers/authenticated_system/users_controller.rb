@@ -1,12 +1,7 @@
 module AuthenticatedSystem
-  class UsersController < AclController
+  class UsersController < ApplicationController
     before_action :find_person, :except => 'index'
-
-    def initialize
-      super
-      @guest_perms = []
-    end
-
+    
     # GET /users
     def index
       redirect_to authenticated_system_people_url

@@ -1,10 +1,5 @@
 module AuthenticatedSystem
-  class PermissionsController < AclController
-    def initialize
-      super
-      @guest_perms = []
-    end
-
+  class PermissionsController < ApplicationController
     # GET /permissions
     # GET /permissions.xml
     def index

@@ -1,10 +1,5 @@
 module AuthenticatedSystem
-  class PeopleController < AclController
-    def initialize
-      super
-      @guest_perms = []
-    end
-
+  class PeopleController < ApplicationController
     # GET /people
     # GET /people.xml
     def index

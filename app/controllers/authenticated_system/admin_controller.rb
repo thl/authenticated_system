@@ -1,10 +1,5 @@
 module AuthenticatedSystem
-  class AdminController < AclController
-    def initialize
-      super
-      @guest_perms = []
-    end
-    
+  class AdminController < ApplicationController
     def index
     end
   end
