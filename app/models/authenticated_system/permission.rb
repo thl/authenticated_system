@@ -20,6 +20,7 @@ module AuthenticatedSystem
     def self.synchronize_with_controllers
       # This no longer seems to be necessary: (either way they do show up in production and don't in development)
       # Rails.configuration.paths.app.controllers.paths.each { |controller_path| Dir.foreach(controller_path) { |file_name| require(File.join(controller_path, file_name)) if /_controller.rb$/ =~ file_name && file_name != 'acl_controller.rb' } if File.exist?(controller_path) }
+      Rails.application.eager_load!
       all_actions = ApplicationController.descendants.collect do |klass|
         controller_path = klass.controller_path
         klass.action_methods.reject{|a| a=~/_callback/ || a.ends_with?('_url') || a.ends_with?('_path')}.collect { |method| "#{controller_path}/#{method.to_s}" }

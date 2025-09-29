@@ -41,16 +41,14 @@ module Authentication
       if resume_session
         required_perm = "#{controller_path}/#{action_name}"
         message = String.new
-        if AuthenticatedSystem::Current.user.authorized? required_perm
-          return true
-        else
+        unless AuthenticatedSystem::Current.user.authorized? required_perm
           message = "Your user is not authorized to access #{required_perm}."
           if request.xhr?
             render :text => "<p style=\"color: green\">#{message}</p>"
           else
             flash[:notice] = message
           end
-          return false
+          redirect_back fallback_location: root_path
         end
       else
         request_authentication
