@@ -139,6 +139,4 @@ module AuthenticatedSystem
       #  crypted_password.blank? || !password.blank?
       #end
   end
-  
-  ActiveSupport.run_load_hooks(:authenticated_system_user, User)
 end

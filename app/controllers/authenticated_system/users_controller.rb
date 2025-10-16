@@ -103,6 +103,4 @@ module AuthenticatedSystem
       params.require(:authenticated_system_user).permit(:login, :email, :password, :password_confirmation, :identity_url)
     end
   end
-  
-  ActiveSupport.run_load_hooks(:authenticated_system_users_controller, AuthenticatedSystem::UsersController)
 end
