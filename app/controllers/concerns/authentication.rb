@@ -2,6 +2,7 @@ module Authentication
   extend ActiveSupport::Concern
 
   included do
+    before_action :resume_session
     before_action :require_authentication
     helper_method :authenticated?, :authorized?
   end
@@ -14,7 +15,7 @@ module Authentication
 
   private
     def authenticated?
-      resume_session
+      !AuthenticatedSystem::Current.user.nil?
     end
     
     # from previous implementation
@@ -38,7 +39,7 @@ module Authentication
       #resume_session || request_authentication
       
       # making code compatible with previous implementation
-      if resume_session
+      if authenticated?
         required_perm = "#{controller_path}/#{action_name}"
         message = String.new
         unless AuthenticatedSystem::Current.user.authorized? required_perm
