@@ -82,15 +82,7 @@ module Authentication
     def shibboleth_id
       request.env['HTTP_REMOTE_USER']#.blank? ? session[:netbadgeid] : request.env['HTTP_REMOTE_USER']
     end
-
-    def shibboleth_fullname
-      "#{request.env['HTTP_GIVENNAME']} #{request.env['HTTP_SN']}"
-    end
-
-    def shibboleth_email
-      request.env['HTTP_EPPN']
-    end
-
+    
     def request_authentication
       session[:return_to_after_authenticating] = request.url
       

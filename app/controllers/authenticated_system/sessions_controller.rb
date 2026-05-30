@@ -39,7 +39,7 @@ module AuthenticatedSystem
       elsif self.shibboleth_id.blank?
         redirect_to new_authenticated_system_session_url, alert: "Try another email address or password."
       else
-        user = User.find_by(shibboleth_id: self.shibboleth_id) || User.find_by(email: "#{self.shibboleth_id}@virginia.edu")
+        user = User.find_by(shibboleth_id: self.shibboleth_id) || User.find_by(email: self.shibboleth_email)
         if user.nil?
           # go back to regular http
           #redirect_to signup_netbadge_url
