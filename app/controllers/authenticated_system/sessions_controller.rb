@@ -33,8 +33,11 @@ module AuthenticatedSystem
       session['REMOTE_USER'] = self.shibboleth_id
 
       if authenticated?
-        AuthenticatedSystem::Current.user.update_attribute(:shibboleth_id, self.shibboleth_id) if AuthenticatedSystem::Current.user.shibboleth_id.blank? && User.find_by(shibboleth_id: self.shibboleth_id).nil?
-        flash[:notice] = "UVa credentials associated successfully."
+        user = AuthenticatedSystem::Current.user
+        if (user.shibboleth_id.blank? || user.shibboleth_id != self.shibboleth_id) && User.find_by(shibboleth_id: self.shibboleth_id).nil?
+          user.update_attribute(:shibboleth_id, self.shibboleth_id)
+          flash[:notice] = "Credentials associated successfully."
+        end
         redirect_to after_authentication_url
       elsif self.shibboleth_id.blank?
         redirect_to new_authenticated_system_session_url, alert: "Try another email address or password."
@@ -48,11 +51,14 @@ module AuthenticatedSystem
           user = p.build_user :login => self.shibboleth_id, :email => self.shibboleth_email
           user.shibboleth_id = self.shibboleth_id
           user.save
-          flash[:notice] = "UVa user created and logged in successfully."
+          flash[:notice] = "User created and logged in successfully."
           start_new_session_for(user)
           redirect_to after_authentication_url
         else
-          user.update_attribute(:shibboleth_id, self.shibboleth_id) if user.shibboleth_id.blank? && User.find_by(shibboleth_id: self.shibboleth_id).nil?
+          if (user.shibboleth_id.blank? || user.shibboleth_id != self.shibboleth_id) && User.find_by(shibboleth_id: self.shibboleth_id).nil?
+            user.update_attribute(:shibboleth_id, self.shibboleth_id)
+            flash[:notice] = "Credentials associated successfully."
+          end
           start_new_session_for(user)
           successful_login
         end
