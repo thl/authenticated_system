@@ -47,8 +47,8 @@ module AuthenticatedSystem
           # go back to regular http
           #redirect_to signup_netbadge_url
           # redirect_to new_authenticated_system_session_url, alert: "Try another email address or password."
-          p = Person.create :fullname => self.shibboleth_fullname
-          user = p.build_user :login => self.shibboleth_id, :email => self.shibboleth_email
+          p = Person.create fullname: self.shibboleth_fullname
+          user = p.build_user login: self.shibboleth_email.split('@').first , email: self.shibboleth_email
           user.shibboleth_id = self.shibboleth_id
           user.save
           flash[:notice] = "User created and logged in successfully."
