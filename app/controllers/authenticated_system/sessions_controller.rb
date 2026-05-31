@@ -58,9 +58,11 @@ module AuthenticatedSystem
           if (user.shibboleth_id.blank? || user.shibboleth_id != self.shibboleth_id) && User.find_by(shibboleth_id: self.shibboleth_id).nil?
             user.update_attribute(:shibboleth_id, self.shibboleth_id)
             flash[:notice] = "Credentials associated successfully."
+            redirect_to after_authentication_url
+          else
+            start_new_session_for(user)
+            successful_login
           end
-          start_new_session_for(user)
-          successful_login
         end
       end
     end
